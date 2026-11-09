@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-cream: #f9f7f2;
+  --color-brand-card: #f4f1ea;
+  --color-brand-dark: #1c1f24;
+  --color-brand-coral: #e26b67;
+  --color-brand-coral-soft: #fbeeed;
+  --color-brand-muted: #7d848d;
+  --color-brand-border: #eae6dd;
+
+  --color-paper: #f6f4ee;
+  --color-paper-dark: #edeae1;
+  --color-charcoal: #1f2428;
+  --color-subtle-text: #686b6e;
+  --color-border-cream: #e6e2d8;
+
+  --color-stone-bg: #dcdad4;
+  --color-warm-beige: #e5e3dd;
+  --color-pure-dark: #121212;
+
+  --font-serif: "Newsreader", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --shadow-book: 0 18px 30px -10px rgba(45, 30, 20, 0.28), 0 6px 12px -4px rgba(0, 0, 0, 0.08);
+  --shadow-open-book: 0 25px 45px -12px rgba(40, 25, 15, 0.35);
+  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f6f4ee;
+  --foreground: #1f2428;
 }
 
 body {
-  background: var(--background);
+  font-family: var(--font-sans);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+.font-serif-heading {
+  font-family: var(--font-serif);
+}
+
+/* 3D Depth Shadow for Realistic Book Cover */
+.book-shadow {
+  box-shadow: 
+    0 24px 48px -12px rgba(18, 22, 25, 0.45),
+    0 12px 24px -8px rgba(0, 0, 0, 0.3),
+    inset -2px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtle 3D paper spine crease effect */
+.book-spine-crease {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.06) 28%,
+    rgba(255, 255, 255, 0.7) 48%,
+    rgba(0, 0, 0, 0.06) 68%,
+    rgba(0, 0, 0, 0.18) 100%
+  );
+}
+
+.book-shadow-edge {
+  filter: drop-shadow(0 14px 16px rgba(44, 32, 23, 0.22));
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* PUREM Landing Custom Styles */
+.tracking-tight-custom {
+  letter-spacing: -0.035em;
+}
+
+.hero-title {
+  line-height: 0.96;
+}
+
+/* Long aesthetic editorial arrow */
+.editorial-arrow {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  width: 140px;
+  height: 2px;
+  background-color: #111111;
+  vertical-align: middle;
+  margin-left: 1.25rem;
+}
+.editorial-arrow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  border-top: 2.5px solid #111111;
+  border-right: 2.5px solid #111111;
+}
+
+/* Frosted glass circular badge */
+.glass-circle {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+}
+.glass-circle:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Frosted glass pill button */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.glass-pill:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
