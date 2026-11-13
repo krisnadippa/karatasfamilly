@@ -109,3 +109,4 @@ export const DialogCloseButton: React.FC<{ onClick: () => void }> = ({ onClick }
     <X className="w-5 h-5" />
   </button>
 );
+

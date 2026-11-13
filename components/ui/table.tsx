@@ -60,3 +60,4 @@ export const TableCell: React.FC<
 > = ({ className, ...props }) => (
   <td className={cn("p-4 align-middle text-[#12303C]", className)} {...props} />
 );
+

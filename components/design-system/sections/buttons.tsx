@@ -1,49 +1,58 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, Send, Download, Sparkles, Check, RefreshCw } from "lucide-react";
+import { ArrowRight, BookOpen, Heart, Download, Sparkles, Check, Send, AlertTriangle, Trash2 } from "lucide-react";
 import { Button, ButtonVariant, ButtonSize } from "@/components/ui/button";
 import { ComponentPreview } from "../component-preview";
 
 export const ButtonsSection: React.FC = () => {
-  // Playground interactive state
-  const [variant, setVariant] = useState<ButtonVariant>("primary");
+  const [variant, setVariant] = useState<ButtonVariant>("teal");
   const [size, setSize] = useState<ButtonSize>("md");
   const [isLoading, setIsLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
+  const [square, setSquare] = useState(false);
   const [hasLeftIcon, setHasLeftIcon] = useState(false);
-  const [hasRightIcon, setHasRightIcon] = useState(false);
+  const [hasRightIcon, setHasRightIcon] = useState(true);
   const [clickCount, setClickCount] = useState(0);
 
-  // Generate real, functional component code
   const generatedCode = `<Button
   variant="${variant}"
-  size="${size}"${isLoading ? "\n  isLoading" : ""}${disabled ? "\n  disabled" : ""}${
-    hasLeftIcon ? "\n  leftIcon={<Sparkles className=\"w-4 h-4\" />}" : ""
-  }${hasRightIcon ? "\n  rightIcon={<ArrowRight className=\"w-4 h-4\" />}" : ""}
-  onClick={() => console.log("Clicked")}
+  size="${size}"${square ? "\n  square" : ""}${isLoading ? "\n  isLoading" : ""}${disabled ? "\n  disabled" : ""}${
+    hasLeftIcon ? '\n  leftIcon={<BookOpen className="w-4 h-4" />}' : ""
+  }${hasRightIcon ? '\n  rightIcon={<ArrowRight className="w-4 h-4" />}' : ""}
+  onClick={() => console.log("Action triggered")}
 >
-  ${variant === "goldenrod" ? "Action Button" : "Button Label"}
+  ${
+    variant === "teal"
+      ? "Jelajahi K4Book"
+      : variant === "secondary"
+      ? "Baca Artikel RANI"
+      : variant === "destructive"
+      ? "Hapus Draft"
+      : variant === "outline"
+      ? "Kenali Brand"
+      : "Primary Action"
+  }
 </Button>`;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
       <div>
         <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider">
-          Interactive Primitives
+          Action Triggers
         </span>
         <h2 className="text-2xl font-bold text-[#12303C] tracking-tight mt-1">
-          Button Component
+          K4Family Button System
         </h2>
         <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl">
-          Komponen tombol interaktif berbasis token korporat dengan 7 varian warna, 4 ukuran, dan dukungan state loading, disabled, serta icon slots.
+          Sistem tombol lengkap dengan 9 varian warna tema, 5 skala ukuran (XS hingga XL), icon slot, dan penanganan status aksesibilitas minimal 44px touch target.
         </p>
       </div>
 
       {/* Main Interactive Playground */}
       <ComponentPreview
         title="Interactive Button Playground"
-        description="Pilih kombinasi varian, ukuran, state, dan icon untuk melihat preview dan kode secara langsung."
+        description="Konfigurasikan varian, ukuran, bentuk, dan state untuk menghasilkan kode TSX riil."
         code={generatedCode}
         controls={
           <div className="w-full flex flex-wrap items-center justify-between gap-4">
@@ -53,23 +62,25 @@ export const ButtonsSection: React.FC = () => {
               <div className="flex flex-wrap gap-1">
                 {(
                   [
+                    "teal",
                     "primary",
                     "secondary",
-                    "teal",
-                    "goldenrod",
                     "outline",
                     "ghost",
-                    "cream",
+                    "link",
+                    "destructive",
+                    "success",
+                    "warning",
                   ] as ButtonVariant[]
                 ).map((v) => (
                   <button
                     key={v}
                     type="button"
                     onClick={() => setVariant(v)}
-                    className={`px-2.5 py-1 rounded-md text-xs font-medium cursor-pointer transition-colors ${
+                    className={`px-2.5 py-1 rounded text-xs font-medium cursor-pointer transition-colors ${
                       variant === v
                         ? "bg-[#12303C] text-white"
-                        : "bg-[#FAF8F5] text-[#12303C]/70 hover:bg-[#EAE5DC]"
+                        : "bg-[#FBF8F0] text-[#12303C]/70 hover:bg-[#EAE5DC]"
                     }`}
                   >
                     {v}
@@ -82,15 +93,15 @@ export const ButtonsSection: React.FC = () => {
             <div className="flex items-center gap-2">
               <span className="font-semibold text-[#12303C]">Size:</span>
               <div className="flex gap-1">
-                {(["sm", "md", "lg", "icon"] as ButtonSize[]).map((s) => (
+                {(["xs", "sm", "md", "lg", "xl", "icon"] as ButtonSize[]).map((s) => (
                   <button
                     key={s}
                     type="button"
                     onClick={() => setSize(s)}
-                    className={`px-2.5 py-1 rounded-md text-xs font-medium cursor-pointer transition-colors ${
+                    className={`px-2 py-1 rounded text-xs font-mono uppercase cursor-pointer transition-colors ${
                       size === s
-                        ? "bg-[#12303C] text-white"
-                        : "bg-[#FAF8F5] text-[#12303C]/70 hover:bg-[#EAE5DC]"
+                        ? "bg-[#12303C] text-white font-bold"
+                        : "bg-[#FBF8F0] text-[#12303C]/70 hover:bg-[#EAE5DC]"
                     }`}
                   >
                     {s}
@@ -99,8 +110,18 @@ export const ButtonsSection: React.FC = () => {
               </div>
             </div>
 
-            {/* State toggles */}
+            {/* Toggles */}
             <div className="flex items-center gap-3">
+              <label className="inline-flex items-center gap-1.5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={square}
+                  onChange={(e) => setSquare(e.target.checked)}
+                  className="rounded text-[#087FA0]"
+                />
+                <span className="text-[#12303C]">Square Radius</span>
+              </label>
+
               <label className="inline-flex items-center gap-1.5 cursor-pointer">
                 <input
                   type="checkbox"
@@ -148,13 +169,26 @@ export const ButtonsSection: React.FC = () => {
           <Button
             variant={variant}
             size={size}
+            square={square}
             isLoading={isLoading}
             disabled={disabled}
-            leftIcon={hasLeftIcon ? <Sparkles className="w-4 h-4" /> : undefined}
+            leftIcon={hasLeftIcon ? <BookOpen className="w-4 h-4" /> : undefined}
             rightIcon={hasRightIcon ? <ArrowRight className="w-4 h-4" /> : undefined}
             onClick={() => setClickCount((c) => c + 1)}
           >
-            {size === "icon" ? <Send className="w-4 h-4" /> : "Action Button"}
+            {size === "icon" ? (
+              <Send className="w-4 h-4" />
+            ) : variant === "teal" ? (
+              "Jelajahi K4Book"
+            ) : variant === "secondary" ? (
+              "Baca Artikel RANI"
+            ) : variant === "destructive" ? (
+              "Hapus Draft"
+            ) : variant === "outline" ? (
+              "Kenali Brand"
+            ) : (
+              "Aksi Utama K4"
+            )}
           </Button>
 
           <span className="text-xs text-[#12303C]/60 font-mono">
@@ -163,45 +197,52 @@ export const ButtonsSection: React.FC = () => {
         </div>
       </ComponentPreview>
 
-      {/* Grid of all variants side by side */}
-      <div className="rounded-2xl border border-[#EAE5DC] bg-white p-6 shadow-xs">
-        <h3 className="text-base font-bold text-[#12303C] mb-4">
-          Semua Varian Tombol (All Variants)
+      {/* Contextual Real-World Actions */}
+      <div className="rounded-2xl border border-[#EAE5DC] bg-white p-6 shadow-xs space-y-4">
+        <h3 className="text-base font-bold text-[#12303C]">
+          Konteks Penggunaan Tombol Resmi K4Family
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] flex flex-col items-center gap-3">
-            <span className="text-xs font-bold text-[#12303C] uppercase">Primary (Midnight)</span>
-            <Button variant="primary">Midnight Button</Button>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-4 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC] space-y-2">
+            <span className="text-xs font-bold text-[#087FA0] uppercase block">
+              1. K4Book Commerce Actions
+            </span>
+            <div className="flex flex-col gap-2">
+              <Button variant="teal" size="sm" rightIcon={<BookOpen className="w-3.5 h-3.5" />}>
+                Jelajahi K4Book
+              </Button>
+              <Button variant="primary" size="sm">
+                Masuk Library
+              </Button>
+            </div>
           </div>
-          <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] flex flex-col items-center gap-3">
-            <span className="text-xs font-bold text-[#12303C] uppercase">Secondary (Forest)</span>
-            <Button variant="secondary">Forest Green</Button>
+
+          <div className="p-4 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC] space-y-2">
+            <span className="text-xs font-bold text-[#20463D] uppercase block">
+              2. RANI Educational Actions
+            </span>
+            <div className="flex flex-col gap-2">
+              <Button variant="secondary" size="sm" rightIcon={<Heart className="w-3.5 h-3.5" />}>
+                Baca Artikel Lengkap
+              </Button>
+              <Button variant="outline" size="sm">
+                Lihat Kategori Parenting
+              </Button>
+            </div>
           </div>
-          <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] flex flex-col items-center gap-3">
-            <span className="text-xs font-bold text-[#12303C] uppercase">Teal (Ocean)</span>
-            <Button variant="teal">Ocean Teal</Button>
-          </div>
-          <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] flex flex-col items-center gap-3">
-            <span className="text-xs font-bold text-[#12303C] uppercase">Goldenrod</span>
-            <Button variant="goldenrod">Bright Goldenrod</Button>
-          </div>
-          <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] flex flex-col items-center gap-3">
-            <span className="text-xs font-bold text-[#12303C] uppercase">Outline</span>
-            <Button variant="outline">Outline Button</Button>
-          </div>
-          <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] flex flex-col items-center gap-3">
-            <span className="text-xs font-bold text-[#12303C] uppercase">Ghost</span>
-            <Button variant="ghost">Ghost Button</Button>
-          </div>
-          <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] flex flex-col items-center gap-3">
-            <span className="text-xs font-bold text-[#12303C] uppercase">Cream Canvas</span>
-            <Button variant="cream">Cream Surface</Button>
-          </div>
-          <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EAE5DC] flex flex-col items-center gap-3">
-            <span className="text-xs font-bold text-[#12303C] uppercase">Icon Only</span>
-            <Button variant="teal" size="icon" aria-label="Download">
-              <Download className="w-4 h-4" />
-            </Button>
+
+          <div className="p-4 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC] space-y-2">
+            <span className="text-xs font-bold text-[#12303C] uppercase block">
+              3. Future Brands (Non-Transaksi)
+            </span>
+            <div className="flex flex-col gap-2">
+              <Button variant="outline" size="sm">
+                Kenali Brand
+              </Button>
+              <Button variant="ghost" size="sm">
+                Lihat Konsep Karya
+              </Button>
+            </div>
           </div>
         </div>
       </div>

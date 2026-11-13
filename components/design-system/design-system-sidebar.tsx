@@ -10,10 +10,12 @@ import {
   ToggleLeft,
   BellRing,
   Navigation,
-  ExternalLink,
   Table as TableIcon,
   LayoutGrid,
   Sparkles,
+  Smile,
+  Shield,
+  Columns
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -25,17 +27,19 @@ export interface NavSection {
 }
 
 export const navSections: NavSection[] = [
-  { id: "foundations", title: "Foundations & Tokens", icon: <Palette className="w-4 h-4" />, count: 6 },
-  { id: "buttons", title: "Buttons", icon: <Component className="w-4 h-4" />, count: 7 },
-  { id: "forms", title: "Form Controls", icon: <FormInput className="w-4 h-4" />, count: 3 },
-  { id: "selection", title: "Selection & Toggles", icon: <ToggleLeft className="w-4 h-4" />, count: 4 },
-  { id: "data-display", title: "Data Display", icon: <Layers className="w-4 h-4" />, count: 5 },
-  { id: "feedback", title: "Feedback & Loading", icon: <BellRing className="w-4 h-4" />, count: 4 },
-  { id: "navigation", title: "Navigation", icon: <Navigation className="w-4 h-4" />, count: 3 },
-  { id: "overlays", title: "Overlays & Tooltips", icon: <SquareCheckBig className="w-4 h-4" />, count: 2 },
-  { id: "tables", title: "Data Tables", icon: <TableIcon className="w-4 h-4" />, count: 1 },
-  { id: "layouts", title: "Layouts & Bounds", icon: <LayoutGrid className="w-4 h-4" />, count: 4 },
-  { id: "advanced", title: "Advanced Patterns", icon: <Sparkles className="w-4 h-4" />, count: 2 },
+  { id: "foundations", title: "Foundations & Colors", icon: <Palette className="w-4 h-4" />, count: 8 },
+  { id: "icons", title: "Icon System (Lucide)", icon: <Smile className="w-4 h-4" />, count: 52 },
+  { id: "brand-directory", title: "Brand Tokens (9 Brands)", icon: <Sparkles className="w-4 h-4" />, count: 9 },
+  { id: "navigation", title: "Navigation System", icon: <Navigation className="w-4 h-4" />, count: 4 },
+  { id: "buttons", title: "Buttons System", icon: <Component className="w-4 h-4" />, count: 9 },
+  { id: "forms", title: "Form Components", icon: <FormInput className="w-4 h-4" />, count: 8 },
+  { id: "selection", title: "Selection Controls", icon: <ToggleLeft className="w-4 h-4" />, count: 5 },
+  { id: "data-display", title: "Data Display & Cards", icon: <Layers className="w-4 h-4" />, count: 6 },
+  { id: "feedback", title: "Feedback & Transactions", icon: <BellRing className="w-4 h-4" />, count: 4 },
+  { id: "sidebars", title: "Sidebar System (Admin)", icon: <Columns className="w-4 h-4" />, count: 3 },
+  { id: "tables", title: "Data Tables (DEMO)", icon: <TableIcon className="w-4 h-4" />, count: 3 },
+  { id: "overlays", title: "Overlays & Tooltips", icon: <SquareCheckBig className="w-4 h-4" />, count: 3 },
+  { id: "layouts", title: "Page Layout & Footer", icon: <LayoutGrid className="w-4 h-4" />, count: 4 },
 ];
 
 export interface DesignSystemSidebarProps {
@@ -69,8 +73,8 @@ export const DesignSystemSidebar: React.FC<DesignSystemSidebarProps> = ({
         )}
       >
         <div className="pb-3 mb-2 border-b border-[#EAE5DC]">
-          <span className="text-[11px] font-bold text-[#12303C]/50 uppercase tracking-wider">
-            Components & Modules
+          <span className="text-[10px] font-bold text-[#12303C]/50 uppercase tracking-wider block">
+            Developer Brief V04 Navigation
           </span>
         </div>
 
@@ -89,7 +93,7 @@ export const DesignSystemSidebar: React.FC<DesignSystemSidebarProps> = ({
                   "w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-colors text-left cursor-pointer",
                   isActive
                     ? "bg-[#12303C] text-white shadow-xs font-semibold"
-                    : "text-[#12303C]/75 hover:bg-[#FAF8F5] hover:text-[#12303C]"
+                    : "text-[#12303C]/75 hover:bg-[#FBF8F0] hover:text-[#12303C]"
                 )}
               >
                 <div className="flex items-center gap-2.5">
@@ -116,12 +120,12 @@ export const DesignSystemSidebar: React.FC<DesignSystemSidebarProps> = ({
         </nav>
 
         <div className="mt-auto pt-4 border-t border-[#EAE5DC]">
-          <div className="p-3 bg-[#FAF8F5] rounded-xl border border-[#EAE5DC]">
-            <span className="text-[10px] font-bold text-[#12303C] uppercase tracking-wider block">
-              Corporate Palette
+          <div className="p-3 bg-[#FBF8F0] rounded-xl border border-[#EAE5DC] space-y-1">
+            <span className="text-[10px] font-bold text-[#087FA0] uppercase tracking-wider block">
+              Official Tagline
             </span>
-            <p className="text-[11px] text-[#12303C]/70 mt-1">
-              Midnight Blue, Forest Green, Ocean Teal, Goldenrod, Cream.
+            <p className="text-[11px] text-[#12303C]/80 italic font-serif leading-snug">
+              "Inspire the Young — Learn, Grow, Lead"
             </p>
           </div>
         </div>

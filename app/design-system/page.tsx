@@ -3,17 +3,20 @@
 import React, { useState, useMemo } from "react";
 import { DesignSystemLayout } from "@/components/design-system/design-system-layout";
 import { FoundationsSection } from "@/components/design-system/sections/foundations";
+import { IconsSection } from "@/components/design-system/sections/icons";
+import { BrandDirectorySection } from "@/components/design-system/sections/brand-directory";
+import { NavigationSection } from "@/components/design-system/sections/navigation";
 import { ButtonsSection } from "@/components/design-system/sections/buttons";
 import { FormsSection } from "@/components/design-system/sections/forms";
 import { SelectionSection } from "@/components/design-system/sections/selection";
 import { DataDisplaySection } from "@/components/design-system/sections/data-display";
 import { FeedbackSection } from "@/components/design-system/sections/feedback";
-import { NavigationSection } from "@/components/design-system/sections/navigation";
-import { OverlaysSection } from "@/components/design-system/sections/overlays";
+import { SidebarsSection } from "@/components/design-system/sections/sidebars";
 import { TablesSection } from "@/components/design-system/sections/tables";
+import { OverlaysSection } from "@/components/design-system/sections/overlays";
 import { LayoutsSection } from "@/components/design-system/sections/layouts";
-import { AdvancedSection } from "@/components/design-system/sections/advanced";
 import { Button } from "@/components/ui/button";
+import { OFFICIAL_TAGLINE } from "@/lib/design-system/tokens";
 
 export default function DesignSystemPage() {
   const [activeSection, setActiveSection] = useState<string>("all");
@@ -21,17 +24,19 @@ export default function DesignSystemPage() {
 
   const sections = useMemo(
     () => [
-      { id: "foundations", title: "Foundations & Tokens", component: <FoundationsSection /> },
-      { id: "buttons", title: "Buttons", component: <ButtonsSection /> },
-      { id: "forms", title: "Form Controls", component: <FormsSection /> },
-      { id: "selection", title: "Selection & Toggles", component: <SelectionSection /> },
+      { id: "foundations", title: "Foundations & Colors", component: <FoundationsSection /> },
+      { id: "icons", title: "Icon System (Lucide)", component: <IconsSection /> },
+      { id: "brand-directory", title: "Brand Tokens (9 Brands)", component: <BrandDirectorySection /> },
+      { id: "navigation", title: "Navigation System", component: <NavigationSection /> },
+      { id: "buttons", title: "Buttons System", component: <ButtonsSection /> },
+      { id: "forms", title: "Form Components", component: <FormsSection /> },
+      { id: "selection", title: "Selection Controls", component: <SelectionSection /> },
       { id: "data-display", title: "Data Display & Cards", component: <DataDisplaySection /> },
-      { id: "feedback", title: "Feedback & Loading States", component: <FeedbackSection /> },
-      { id: "navigation", title: "Navigation Components", component: <NavigationSection /> },
-      { id: "overlays", title: "Dialogs & Tooltips", component: <OverlaysSection /> },
-      { id: "tables", title: "Data Tables", component: <TablesSection /> },
-      { id: "layouts", title: "Layouts & Grid Bounds", component: <LayoutsSection /> },
-      { id: "advanced", title: "Advanced Composite Patterns", component: <AdvancedSection /> },
+      { id: "feedback", title: "Feedback & Transactions", component: <FeedbackSection /> },
+      { id: "sidebars", title: "Sidebar System (Admin)", component: <SidebarsSection /> },
+      { id: "tables", title: "Data Tables (DEMO)", component: <TablesSection /> },
+      { id: "overlays", title: "Overlays & Tooltips", component: <OverlaysSection /> },
+      { id: "layouts", title: "Page Layout & Footer", component: <LayoutsSection /> },
     ],
     []
   );
@@ -52,21 +57,23 @@ export default function DesignSystemPage() {
       activeSection={activeSection}
       onSelectSection={(id) => {
         setActiveSection(id);
-        // Clear search when explicitly selecting a category
         setSearchQuery("");
       }}
       searchQuery={searchQuery}
       onSearchChange={setSearchQuery}
     >
       <div className="space-y-16">
-        {/* Top Banner / Filter status */}
+        {/* Top Header Banner */}
         <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#EAE5DC]">
           <div>
-            <h1 className="text-3xl font-serif font-bold text-[#12303C] tracking-tight">
-              Karatas Family Design System
+            <h1 className="text-3xl font-bold text-[#12303C] tracking-tight font-montserrat">
+              K4Family Design System
             </h1>
             <p className="text-xs text-[#12303C]/70 mt-1">
-              Panduan komponen arsitektural Next.js App Router, token warna korporat, dan playground interaktif.
+              Developer Brief V04 Single Source of Truth: Palet warna korporat resmi, 9 lini brand ekosistem, sistem icon Lucide, dan komponen UI terintegrasi Next.js.
+            </p>
+            <p className="text-[11px] text-[#087FA0] font-serif italic mt-0.5">
+              "{OFFICIAL_TAGLINE}"
             </p>
           </div>
 
@@ -84,7 +91,7 @@ export default function DesignSystemPage() {
           </div>
         </div>
 
-        {/* Rendered Sections */}
+        {/* Render Sections */}
         {filteredSections.length > 0 ? (
           filteredSections.map((sec) => (
             <section key={sec.id} id={sec.id} className="scroll-mt-24">
@@ -97,7 +104,7 @@ export default function DesignSystemPage() {
               Tidak ditemukan komponen untuk pencarian "{searchQuery}"
             </p>
             <p className="text-xs text-[#12303C]/60 mt-1">
-              Coba kata kunci lain seperti button, input, card, badge, dialog, atau color.
+              Coba kata kunci seperti navbar, button, card, kidstory, rani, icon, dialog, atau table.
             </p>
             <Button
               variant="outline"

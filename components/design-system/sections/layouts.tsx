@@ -1,68 +1,102 @@
 "use client";
 
 import React from "react";
-import { LayoutGrid, Maximize2, SplitSquareVertical, ArrowRightLeft } from "lucide-react";
+import { BookOpen, Sparkles, ArrowRight, Shield } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Footer } from "@/components/navigation/footer";
 import { ComponentPreview } from "../component-preview";
+import { OFFICIAL_LOGO_PLACEHOLDER, OFFICIAL_TAGLINE } from "@/lib/design-system/tokens";
 
 export const LayoutsSection: React.FC = () => {
-  const containerCode = `<section className="w-full py-16 md:py-24">
+  const heroCode = `<section className="w-full py-16 md:py-24 bg-[#FBF8F0] border-b border-[#EAE5DC]">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {/* 4 Pilar Karatas */}
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="space-y-6">
+        <Badge variant="teal" dot>Ekosistem Resmi K4Family</Badge>
+        <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#12303C]">
+          Inspire the Young — Learn, Grow, Lead
+        </h1>
+        <p className="text-sm text-[#12303C]/80 leading-relaxed">
+          Membangun peradaban keluarga melalui literatur bernilai tinggi, edukasi dini empatik, dan karya berkelanjutan.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Button variant="teal" size="lg">Jelajahi K4Book</Button>
+          <Button variant="outline" size="lg">Kenali Ekosistem</Button>
+        </div>
+      </div>
+      <div className="p-12 rounded-3xl bg-white border border-[#EAE5DC] text-center">
+        {/* Visual Hero Container */}
+      </div>
     </div>
   </div>
 </section>`;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
       <div>
         <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider">
-          Spatial & Alignment Rules
+          Spatial & Structure Rules
         </span>
         <h2 className="text-2xl font-bold text-[#12303C] tracking-tight mt-1">
-          Layout Bounds & Grid Rulers
+          Page Layout Components & Footer System
         </h2>
         <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl">
-          Standar batas kontainer, margin horizontal, jarak antar-section, dan sistem kolom adaptif untuk menjamin konsistensi visual di seluruh perangkat.
+          Sistem layout teruji: Hero Section, Container Max-W-7xl (1280px), Padding Vertikal (py-16 md:py-24), Margin Horisontal Aman, dan Sistem Footer 5 Kolom K4Family.
         </p>
       </div>
 
+      {/* 1. Homepage & K4Book Hero Layout */}
       <ComponentPreview
-        title="Responsive Grid & Safe Margin Ruler"
-        description="Visualisasi batas layout 4-kolom dengan padding aman dan batasan max-w-7xl (1280px)."
-        code={containerCode}
+        title="Homepage Hero Layout (Editorial Split Screen)"
+        description="Layout dua kolom asimetris dengan headline resmi, badge ekosistem, deskripsi nilai, dan aksi pemicu utama."
+        code={heroCode}
       >
-        <div className="w-full space-y-4">
-          {/* Layout Rulers Visualizer */}
-          <div className="p-4 rounded-xl border border-dashed border-[#087FA0]/40 bg-[#087FA0]/5 flex flex-col gap-2">
-            <div className="flex items-center justify-between text-xs font-mono text-[#087FA0]">
-              <span>[Outer Bleed: 100% viewport]</span>
-              <span>Section Padding: py-16 / py-24</span>
+        <div className="w-full bg-[#FBF8F0] p-6 sm:p-10 rounded-2xl border border-[#EAE5DC]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              <Badge variant="teal" size="sm" dot>
+                Ekosistem Resmi K4Family
+              </Badge>
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#12303C] leading-tight">
+                {OFFICIAL_TAGLINE}
+              </h3>
+              <p className="text-xs text-[#12303C]/75 leading-relaxed">
+                Membangun masa depan generasi melalui penerbitan buku anak bermutu tinggi (K4Book), artikel edukasi keluarga yang empatik (RANI), serta karya kriya dan agrikultur berkelanjutan.
+              </p>
+              <div className="flex flex-wrap gap-2.5 pt-2">
+                <Button variant="teal" size="md" rightIcon={<BookOpen className="w-4 h-4" />}>
+                  Jelajahi K4Book
+                </Button>
+                <Button variant="outline" size="md">
+                  Pelajari Ekosistem
+                </Button>
+              </div>
             </div>
 
-            <div className="border border-[#12303C]/20 rounded-lg p-3 bg-white">
-              <div className="flex items-center justify-between text-xs font-mono text-[#12303C]/60 mb-2">
-                <span>Safe Margin X: px-4 (mobile) to px-8 (desktop)</span>
-                <span>Max Width: 1280px (max-w-7xl)</span>
+            <div className="p-8 rounded-2xl bg-white border border-[#EAE5DC] flex flex-col items-center justify-center text-center shadow-xs">
+              <div className="h-10 px-4 rounded-lg bg-[#12303C] text-white flex items-center font-mono font-bold text-xs tracking-wider mb-3">
+                {OFFICIAL_LOGO_PLACEHOLDER}
               </div>
-
-              {/* 4 Columns Demonstration */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className="p-3 rounded-lg bg-[#12303C] text-white text-center text-xs font-bold">
-                  Col 1: Faith
-                </div>
-                <div className="p-3 rounded-lg bg-[#20463D] text-white text-center text-xs font-bold">
-                  Col 2: Family
-                </div>
-                <div className="p-3 rounded-lg bg-[#087FA0] text-white text-center text-xs font-bold">
-                  Col 3: Freedom
-                </div>
-                <div className="p-3 rounded-lg bg-[#EBCC3D] text-[#12303C] text-center text-xs font-bold">
-                  Col 4: Future
-                </div>
-              </div>
+              <span className="text-xs font-serif font-bold text-[#12303C]">
+                Pusat Integrasi Nilai Keluarga
+              </span>
+              <span className="text-[11px] text-[#12303C]/60 mt-1">
+                K4Book • RANI • K4Craft • K4Studio • K4Farm • K4Health • K4Academy • WarunK
+              </span>
             </div>
           </div>
+        </div>
+      </ComponentPreview>
+
+      {/* 2. Footer System (5 Columns) */}
+      <ComponentPreview
+        title="Official 5-Column Footer System"
+        description="Sistem footer resmi K4Family: Kolom 1 (Logo + Tagline), Kolom 2 (Explore), Kolom 3 (K4Book), Kolom 4 (Support), Kolom 5 (Information)."
+        code={`<Footer />`}
+      >
+        <div className="w-full rounded-2xl overflow-hidden border border-[#EAE5DC]">
+          <Footer />
         </div>
       </ComponentPreview>
     </div>

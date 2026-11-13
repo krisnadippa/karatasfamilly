@@ -1,193 +1,227 @@
 /**
- * Karatas Family Design System Tokens
- * Source of truth for color palette, layout spacing, typography, and component styling.
+ * K4Family Design System Tokens — Developer Brief V04
+ * Single source of truth for color scales, typography, brand identities, and layout bounds.
  */
 
 export const corporateColors = {
   midnightBlue: {
     DEFAULT: "#12303C",
-    hover: "#1A4252",
-    active: "#0D222B",
-    surface: "#EDF2F4",
-    textContrast: "#FFFFFF",
-    description: "Struktur utama, headline, teks kontras, dan elemen fondasi.",
+    50: "#F0F4F7",
+    100: "#D9E3E8",
+    200: "#B3C7D1",
+    300: "#8DABBA",
+    400: "#4D7A94",
+    500: "#1E4C60",
+    600: "#173C4D",
+    700: "#12303C", // Official Primary HEX
+    800: "#0D222B",
+    900: "#08151B",
+    usage: "Header, heading, struktur utama, teks kontras tinggi.",
   },
   forestGreen: {
     DEFAULT: "#20463D",
-    hover: "#2B5D51",
-    active: "#17342D",
-    surface: "#EDF4F1",
-    textContrast: "#FFFFFF",
-    description: "Alam, ketenangan, sustainability, dan pertumbuhan regeneratif.",
+    50: "#F0F5F4",
+    100: "#DCE7E4",
+    200: "#B9D0CA",
+    300: "#96B8AF",
+    400: "#508A7C",
+    500: "#2B5D51",
+    600: "#20463D", // Official Primary HEX
+    700: "#17342D",
+    800: "#10231E",
+    900: "#0A1713",
+    usage: "Natural elements, sustainability, pertumbuhan harmonis.",
   },
   oceanTeal: {
     DEFAULT: "#087FA0",
-    hover: "#0B97BD",
-    active: "#06627B",
-    surface: "#E8F5F8",
-    textContrast: "#FFFFFF",
-    description: "Pendidikan, rasa ingin tahu, aksen digital, dan elemen interaktif.",
+    50: "#EAF6F9",
+    100: "#CAECF4",
+    200: "#95D9E9",
+    300: "#60C6DE",
+    400: "#24AED0",
+    500: "#0A95BC",
+    600: "#087FA0", // Official Primary HEX
+    700: "#06627C",
+    800: "#044658",
+    900: "#022B36",
+    usage: "Education, digital accent, interaktivitas dan navigasi fokus.",
   },
   brightGoldenrod: {
     DEFAULT: "#EBCC3D",
-    hover: "#F2D75C",
-    active: "#D4B426",
-    surface: "#FCF9E8",
-    textContrast: "#12303C",
-    description: "Highlight premium secukupnya, indikator status, dan fokus visual.",
+    50: "#FCF9E8",
+    100: "#F9F3C6",
+    200: "#F3E78D",
+    300: "#EDDB55",
+    400: "#EBCC3D", // Official Primary HEX
+    500: "#D4B426",
+    600: "#B0951C",
+    700: "#8C7614",
+    800: "#69580D",
+    900: "#453A07",
+    usage: "Highlight premium secukupnya, badge spesial, indikator penting.",
   },
   mutedGold: {
     DEFAULT: "#DFC54E",
-    hover: "#E7D16E",
-    active: "#C8AD36",
-    surface: "#FAF6E9",
-    textContrast: "#12303C",
-    description: "Aksen lembut, border elegan, dan ornamen pelengkap.",
+    50: "#FAF7EA",
+    100: "#F4ECC9",
+    200: "#E9DA94",
+    300: "#DFC54E", // Official Primary HEX
+    400: "#C8AD36",
+    500: "#A9922A",
+    600: "#8B7720",
+    700: "#6C5C17",
+    800: "#4D410F",
+    900: "#2F2708",
+    usage: "Aksen lembut, garis batas halus, ornamen visual editorial.",
   },
   cream: {
-    DEFAULT: "#FAF8F5",
-    muted: "#F3EFE8",
-    surface: "#FFFFFF",
-    border: "#EAE5DC",
-    textContrast: "#12303C",
-    description: "Latar belakang utama, whitespace, dan kanvas pembaca.",
+    DEFAULT: "#FBF8F0",
+    50: "#FFFFFF",
+    100: "#FBF8F0", // Official Primary HEX
+    200: "#F5EFE0",
+    300: "#EFE5CE",
+    400: "#E2D3B3",
+    500: "#D2BF96",
+    usage: "Latar utama halaman (background), whitespace nyaman baca.",
   },
-  neutral: {
-    50: "#FAF9F7",
-    100: "#F2EFEA",
-    200: "#E5E0D8",
-    300: "#D3CCC1",
-    400: "#9E9689",
-    500: "#70695E",
-    600: "#4D463C",
-    700: "#363028",
-    800: "#241F1A",
-    900: "#171411",
-    950: "#0D0A08",
+  white: {
+    DEFAULT: "#FFFFFF",
+    usage: "Surface kartu, modal container, kontras bersih.",
   },
-} as const;
+  softGray: {
+    DEFAULT: "#F4F6F5",
+    50: "#FAFBFA",
+    100: "#F4F6F5", // Official Primary HEX
+    200: "#E6ECE9",
+    300: "#D4DED9",
+    400: "#A7B8B0",
+    500: "#7A9287",
+    usage: "Secondary background, bar filter, kontainer sekunder.",
+  },
+};
 
-export const layoutTokens = {
-  containerMaxWidth: {
-    sm: "640px",
-    md: "768px",
-    lg: "1024px",
-    xl: "1280px",
-    "2xl": "1400px",
-    content: "1200px",
-    reading: "760px",
-  },
-  pagePaddingX: {
-    mobile: "16px", // px-4
-    tablet: "24px", // px-6
-    desktop: "48px", // px-12
-    wide: "64px", // px-16
-  },
-  sectionPaddingY: {
-    compact: "48px", // py-12
-    standard: "80px", // py-20
-    spacious: "112px", // py-28
-  },
-  sectionGap: {
-    mobile: "32px", // gap-8
-    tablet: "48px", // gap-12
-    desktop: "64px", // gap-16
-  },
-  gridGutters: {
-    tight: "12px", // gap-3
-    standard: "20px", // gap-5
-    relaxed: "28px", // gap-7
-    spacious: "36px", // gap-9
-  },
-} as const;
+/**
+ * 9 Business Lines of the K4Family Ecosystem
+ */
+export interface K4Brand {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  status: "Active Phase 1" | "Akan Datang";
+  visualStyle: string;
+  accentColor: string;
+  badgeVariant: "teal" | "forest" | "midnight" | "goldenrod" | "gold" | "cream" | "outline";
+}
 
-export const typographyTokens = {
-  fontFamily: {
-    primary: '"Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-    serif: '"Newsreader", "Cormorant Garamond", Georgia, serif',
+export const k4Brands: K4Brand[] = [
+  {
+    id: "k4family",
+    name: "K4Family",
+    tagline: "Inspire the Young — Learn, Grow, Lead",
+    description: "Corporate Ecosystem yang memayungi seluruh inisiatif nilai, keluarga, dan kepemimpinan generasi muda.",
+    status: "Active Phase 1",
+    visualStyle: "Warm, structured, Cream/White canvas, Midnight Blue, Forest Green, Ocean Teal, Gold accents.",
+    accentColor: "#12303C",
+    badgeVariant: "midnight",
   },
-  sizes: {
-    display: {
-      fontSize: "56px",
-      lineHeight: "1.08",
-      letterSpacing: "-0.035em",
-      fontWeight: "900",
-    },
-    h1: {
-      fontSize: "44px",
-      lineHeight: "1.12",
-      letterSpacing: "-0.03em",
-      fontWeight: "800",
-    },
-    h2: {
-      fontSize: "36px",
-      lineHeight: "1.18",
-      letterSpacing: "-0.025em",
-      fontWeight: "800",
-    },
-    h3: {
-      fontSize: "26px",
-      lineHeight: "1.25",
-      letterSpacing: "-0.02em",
-      fontWeight: "700",
-    },
-    h4: {
-      fontSize: "20px",
-      lineHeight: "1.32",
-      letterSpacing: "-0.015em",
-      fontWeight: "700",
-    },
-    bodyLarge: {
-      fontSize: "18px",
-      lineHeight: "1.55",
-      letterSpacing: "-0.01em",
-      fontWeight: "400",
-    },
-    bodyDefault: {
-      fontSize: "15px",
-      lineHeight: "1.6",
-      letterSpacing: "-0.005em",
-      fontWeight: "400",
-    },
-    bodySmall: {
-      fontSize: "13px",
-      lineHeight: "1.55",
-      letterSpacing: "0",
-      fontWeight: "400",
-    },
-    caption: {
-      fontSize: "12px",
-      lineHeight: "1.45",
-      letterSpacing: "0.01em",
-      fontWeight: "500",
-    },
-    overline: {
-      fontSize: "11px",
-      lineHeight: "1.3",
-      letterSpacing: "0.12em",
-      fontWeight: "700",
-      textTransform: "uppercase",
-    },
+  {
+    id: "k4book",
+    name: "K4Book",
+    tagline: "Digital Publishing & Book Commerce",
+    description: "Penerbitan buku cerita anak, literatur kepemimpinan, dan komersialisasi karya keluarga bermutu tinggi.",
+    status: "Active Phase 1",
+    visualStyle: "Editorial book publishing, watercolor storybook (Kidstory), flat-vector HR (HumOR), literary cinematic (Novel).",
+    accentColor: "#087FA0",
+    badgeVariant: "teal",
   },
-} as const;
+  {
+    id: "rani",
+    name: "RANI",
+    tagline: "Family Education Articles",
+    description: "Kanal artikel edukasi keluarga, parenting empatik, psikologi perkembangan, dan refleksi hidup.",
+    status: "Active Phase 1",
+    visualStyle: "Soft Editorial Gouache, empatik, hangat, tenang, faceless-first (tidak menggunakan foto founder).",
+    accentColor: "#20463D",
+    badgeVariant: "forest",
+  },
+  {
+    id: "k4craft",
+    name: "K4Craft",
+    tagline: "Functional Products & Woodcraft",
+    description: "Kriya kayu fungsional, produk kerajinan tangan presisi, dan estetika perabot keluarga alami.",
+    status: "Akan Datang",
+    visualStyle: "Functional/isometric, woodcraft craftsmanship, industrial yet warm tactile finishes.",
+    accentColor: "#8C5E38",
+    badgeVariant: "outline",
+  },
+  {
+    id: "k4studio",
+    name: "K4Studio",
+    tagline: "Creative Production",
+    description: "Studio produksi kreatif terpadu untuk konten visual, audio, animasi edukasi, dan dokumentasi ekosistem.",
+    status: "Akan Datang",
+    visualStyle: "Creative editorial, cinematic framing, production-oriented aesthetic.",
+    accentColor: "#2A4B7C",
+    badgeVariant: "outline",
+  },
+  {
+    id: "k4farm",
+    name: "K4Farm",
+    tagline: "Family Agriculture",
+    description: "Pertanian keluarga berkelanjutan, ketahanan pangan lokal, dan edukasi budidaya alami regeneratif.",
+    status: "Akan Datang",
+    visualStyle: "Rustic, hand-painted botanical, natural earth textures and organic simplicity.",
+    accentColor: "#3B6939",
+    badgeVariant: "outline",
+  },
+  {
+    id: "k4health",
+    name: "K4Health",
+    tagline: "Wellness & Botanical Knowledge",
+    description: "Literasi kesehatan holistik berbasis tanaman herbal nusantara, kebugaran keluarga, dan sains botani terapan.",
+    status: "Akan Datang",
+    visualStyle: "Scientific botanical illustration, informative, higienis tanpa menimbulkan kesan klinik dingin.",
+    accentColor: "#1B7A68",
+    badgeVariant: "outline",
+  },
+  {
+    id: "k4academy",
+    name: "K4Academy",
+    tagline: "Early Years Education",
+    description: "Pendidikan anak usia dini berbasis kurikulum holistik yang menstimulasi rasa ingin tahu dan kepemimpinan.",
+    status: "Akan Datang",
+    visualStyle: "Playful learning graphics, inclusive, clear readable shapes and cheerful warmth.",
+    accentColor: "#EB963D",
+    badgeVariant: "outline",
+  },
+  {
+    id: "warunk",
+    name: "WarunK",
+    tagline: "Culinary Concept",
+    description: "Konsep kuliner hangat berbasis resep autentik keluarga, bahan segar lokal, dan atmosfer kebersamaan santap.",
+    status: "Akan Datang",
+    visualStyle: "Culinary journal style, hand-painted food illustrations, artisanal rustic charm.",
+    accentColor: "#B54D35",
+    badgeVariant: "outline",
+  },
+];
 
-export const radiiTokens = {
-  none: "0px",
-  xs: "4px",
-  sm: "8px",
-  md: "12px",
-  lg: "16px",
-  xl: "22px",
-  "2xl": "28px",
-  "3xl": "36px",
-  full: "9999px",
-} as const;
+/**
+ * Kidstory Age Groups (Strictly per Developer Brief V04)
+ */
+export const kidstoryAgeGroups = [
+  { id: "0-18m", label: "0–18 bulan", description: "Buku sensori, pengenalan rima suara, kontras visual awal." },
+  { id: "18m-3y", label: "18 bulan–3 tahun", description: "Eksplorasi kata pertama, emosi dasar, dan kebiasaan baik." },
+  { id: "3-5y", label: "3–5 tahun", description: "Kemandirian, imajinasi kreatif, cerita empati persahabatan." },
+];
 
-export const shadowTokens = {
-  subtle: "0 1px 3px rgba(18, 48, 60, 0.05)",
-  card: "0 4px 16px -2px rgba(18, 48, 60, 0.06)",
-  elevated: "0 12px 32px -4px rgba(18, 48, 60, 0.10)",
-  floating: "0 20px 48px -8px rgba(18, 48, 60, 0.16)",
-  dropdown: "0 10px 30px -5px rgba(18, 48, 60, 0.12), 0 0 0 1px rgba(18, 48, 60, 0.06)",
-} as const;
+/**
+ * Official Tagline
+ */
+export const OFFICIAL_TAGLINE = "Inspire the Young — Learn, Grow, Lead";
 
+/**
+ * Official Logo Placeholder Label
+ */
+export const OFFICIAL_LOGO_PLACEHOLDER = "Official Logo Placeholder";

@@ -1,55 +1,54 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-cream: #f9f7f2;
-  --color-brand-card: #f4f1ea;
-  --color-brand-dark: #1c1f24;
-  --color-brand-coral: #e26b67;
-  --color-brand-coral-soft: #fbeeed;
+  --color-brand-cream: #fbf8f0;
+  --color-brand-card: #ffffff;
+  --color-brand-dark: #12303c;
   --color-brand-muted: #7d848d;
-  --color-brand-border: #eae6dd;
+  --color-brand-border: #eae5dc;
 
-  --color-paper: #f6f4ee;
-  --color-paper-dark: #edeae1;
-  --color-charcoal: #1f2428;
-  --color-subtle-text: #686b6e;
-  --color-border-cream: #e6e2d8;
+  --color-paper: #fbf8f0;
+  --color-paper-dark: #f4f6f5;
+  --color-charcoal: #12303c;
+  --color-subtle-text: #596a72;
+  --color-border-cream: #eae5dc;
 
-  --color-stone-bg: #dcdad4;
-  --color-warm-beige: #e5e3dd;
-  --color-pure-dark: #121212;
-
-  /* Corporate Brand Color Palette */
+  /* Official K4Family Corporate Palette (Developer Brief V04) */
   --color-corporate-midnight: #12303c;
   --color-corporate-midnight-hover: #1a4252;
   --color-corporate-midnight-active: #0d222b;
+
   --color-corporate-forest: #20463d;
   --color-corporate-forest-hover: #2b5d51;
   --color-corporate-forest-active: #17342d;
+
   --color-corporate-teal: #087fa0;
   --color-corporate-teal-hover: #0b97bd;
   --color-corporate-teal-active: #06627b;
+
   --color-corporate-goldenrod: #ebcc3d;
   --color-corporate-goldenrod-hover: #f2d75c;
   --color-corporate-goldenrod-active: #d4b426;
+
   --color-corporate-gold-muted: #dfc54e;
   --color-corporate-gold-muted-hover: #e7d16e;
-  --color-corporate-cream: #faf8f5;
-  --color-corporate-cream-muted: #f3efe8;
-  --color-corporate-border: #eae5dc;
+
+  --color-corporate-cream: #fbf8f0;
+  --color-corporate-softgray: #f4f6f5;
   --color-corporate-white: #ffffff;
+  --color-corporate-border: #eae5dc;
 
+  --font-montserrat: "Montserrat", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Montserrat", "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Newsreader", "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  --shadow-book: 0 18px 30px -10px rgba(45, 30, 20, 0.28), 0 6px 12px -4px rgba(0, 0, 0, 0.08);
-  --shadow-open-book: 0 25px 45px -12px rgba(40, 25, 15, 0.35);
-  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+  --shadow-book: 0 18px 30px -10px rgba(18, 48, 60, 0.2), 0 6px 12px -4px rgba(0, 0, 0, 0.06);
+  --shadow-soft: 0 4px 20px -2px rgba(18, 48, 60, 0.04);
 }
 
 :root {
-  --background: #f6f4ee;
-  --foreground: #1f2428;
+  --background: #fbf8f0;
+  --foreground: #12303c;
 }
 
 body {
@@ -59,96 +58,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
 .font-serif-heading {
   font-family: var(--font-serif);
 }
-
-/* 3D Depth Shadow for Realistic Book Cover */
-.book-shadow {
-  box-shadow: 
-    0 24px 48px -12px rgba(18, 22, 25, 0.45),
-    0 12px 24px -8px rgba(0, 0, 0, 0.3),
-    inset -2px 0 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Subtle 3D paper spine crease effect */
-.book-spine-crease {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.18) 0%,
-    rgba(0, 0, 0, 0.06) 28%,
-    rgba(255, 255, 255, 0.7) 48%,
-    rgba(0, 0, 0, 0.06) 68%,
-    rgba(0, 0, 0, 0.18) 100%
-  );
-}
-
-.book-shadow-edge {
-  filter: drop-shadow(0 14px 16px rgba(44, 32, 23, 0.22));
-}
-
-.custom-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.custom-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* PUREM Landing Custom Styles */
-.tracking-tight-custom {
-  letter-spacing: -0.035em;
-}
-
-.hero-title {
-  line-height: 0.96;
-}
-
-/* Long aesthetic editorial arrow */
-.editorial-arrow {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  width: 140px;
-  height: 2px;
-  background-color: #111111;
-  vertical-align: middle;
-  margin-left: 1.25rem;
-}
-.editorial-arrow::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-  width: 10px;
-  height: 10px;
-  border-top: 2.5px solid #111111;
-  border-right: 2.5px solid #111111;
-}
-
-/* Frosted glass circular badge */
-.glass-circle {
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
-}
-.glass-circle:hover {
-  background: rgba(255, 255, 255, 0.28);
-  transform: scale(1.04);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Frosted glass pill button */
-.glass-pill {
-  background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-}
-.glass-pill:hover {
-  background: rgba(255, 255, 255, 0.32);
-}
-

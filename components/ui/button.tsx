@@ -7,13 +7,17 @@ import { cn } from "@/lib/utils";
 export type ButtonVariant =
   | "primary"
   | "secondary"
-  | "teal"
-  | "goldenrod"
   | "outline"
   | "ghost"
+  | "link"
+  | "destructive"
+  | "success"
+  | "warning"
+  | "teal"
+  | "goldenrod"
   | "cream";
 
-export type ButtonSize = "sm" | "md" | "lg" | "icon";
+export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl" | "icon";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -23,6 +27,8 @@ export interface ButtonProps
   href?: string;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  fullWidth?: boolean;
+  square?: boolean;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
@@ -38,15 +44,25 @@ const variantStyles: Record<ButtonVariant, string> = {
     "bg-transparent text-[#12303C] border border-[#12303C]/20 hover:border-[#12303C] hover:bg-[#12303C]/5 active:bg-[#12303C]/10",
   ghost:
     "bg-transparent text-[#12303C] hover:bg-[#12303C]/5 active:bg-[#12303C]/10 border border-transparent",
+  link:
+    "bg-transparent text-[#087FA0] hover:underline p-0 h-auto border-none shadow-none font-normal",
+  destructive:
+    "bg-red-700 text-white hover:bg-red-800 active:bg-red-900 border border-transparent shadow-xs",
+  success:
+    "bg-emerald-700 text-white hover:bg-emerald-800 active:bg-emerald-900 border border-transparent shadow-xs",
+  warning:
+    "bg-[#DFC54E] text-[#12303C] hover:bg-[#E7D16E] active:bg-[#C8AD36] border border-transparent shadow-xs font-semibold",
   cream:
-    "bg-[#FAF8F5] text-[#12303C] border border-[#EAE5DC] hover:bg-[#F3EFE8] active:bg-[#EAE5DC] shadow-xs",
+    "bg-[#FBF8F0] text-[#12303C] border border-[#EAE5DC] hover:bg-[#F4F6F5] active:bg-[#EAE5DC] shadow-xs",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "h-9 px-3.5 text-xs rounded-full gap-1.5",
-  md: "h-11 px-5 text-sm rounded-full gap-2",
-  lg: "h-12 px-7 text-base rounded-full gap-2.5",
-  icon: "h-10 w-10 p-0 rounded-full justify-center items-center shrink-0",
+  xs: "h-7 px-2.5 text-[11px] gap-1",
+  sm: "h-9 px-3.5 text-xs gap-1.5",
+  md: "h-11 px-5 text-sm gap-2",
+  lg: "h-12 px-6 text-base gap-2.5",
+  xl: "h-14 px-8 text-lg gap-3",
+  icon: "h-10 w-10 p-0 justify-center items-center shrink-0",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -57,6 +73,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = "md",
       isLoading = false,
       disabled = false,
+      fullWidth = false,
+      square = false,
       className,
       href,
       leftIcon,
@@ -67,7 +85,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseClasses =
-      "inline-flex items-center justify-center font-medium tracking-wide transition-all duration-200 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087FA0] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none";
+      "inline-flex items-center justify-center font-medium tracking-wide transition-all duration-200 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087FA0] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none min-h-[44px]";
+
+    const radiusClass = square ? "rounded-lg" : "rounded-full";
 
     const content = (
       <>
@@ -103,12 +123,18 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       </>
     );
 
+    const combinedClasses = cn(
+      baseClasses,
+      radiusClass,
+      variantStyles[variant],
+      sizeStyles[size],
+      fullWidth && "w-full",
+      className
+    );
+
     if (href && !disabled) {
       return (
-        <Link
-          href={href}
-          className={cn(baseClasses, variantStyles[variant], sizeStyles[size], className)}
-        >
+        <Link href={href} className={combinedClasses}>
           {content}
         </Link>
       );
@@ -120,7 +146,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         disabled={disabled || isLoading}
         aria-busy={isLoading}
-        className={cn(baseClasses, variantStyles[variant], sizeStyles[size], className)}
+        className={combinedClasses}
         {...props}
       >
         {content}
