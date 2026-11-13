@@ -14,8 +14,10 @@ import {
   LayoutGrid,
   Sparkles,
   Smile,
-  Shield,
-  Columns
+  Columns,
+  BarChart3,
+  BookTemplate,
+  Boxes,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -40,6 +42,9 @@ export const navSections: NavSection[] = [
   { id: "tables", title: "Data Tables (DEMO)", icon: <TableIcon className="w-4 h-4" />, count: 3 },
   { id: "overlays", title: "Overlays & Tooltips", icon: <SquareCheckBig className="w-4 h-4" />, count: 3 },
   { id: "layouts", title: "Page Layout & Footer", icon: <LayoutGrid className="w-4 h-4" />, count: 4 },
+  { id: "charts", title: "Charts & Data Viz", icon: <BarChart3 className="w-4 h-4" />, count: 4 },
+  { id: "advanced", title: "Four Pillars Composite", icon: <Boxes className="w-4 h-4" />, count: 4 },
+  { id: "shadcn-guide", title: "shadcn & Layout Guide", icon: <BookTemplate className="w-4 h-4" />, count: 4 },
 ];
 
 export interface DesignSystemSidebarProps {

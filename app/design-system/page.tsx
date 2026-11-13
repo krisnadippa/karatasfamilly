@@ -15,6 +15,9 @@ import { SidebarsSection } from "@/components/design-system/sections/sidebars";
 import { TablesSection } from "@/components/design-system/sections/tables";
 import { OverlaysSection } from "@/components/design-system/sections/overlays";
 import { LayoutsSection } from "@/components/design-system/sections/layouts";
+import { ChartsSection } from "@/components/design-system/sections/charts";
+import { AdvancedSection } from "@/components/design-system/sections/advanced";
+import { ShadcnGuideSection } from "@/components/design-system/sections/shadcn-guide";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { OFFICIAL_TAGLINE } from "@/lib/design-system/tokens";
@@ -38,6 +41,9 @@ export default function DesignSystemPage() {
       { id: "tables", title: "Data Tables (DEMO)", component: <TablesSection /> },
       { id: "overlays", title: "Overlays & Tooltips", component: <OverlaysSection /> },
       { id: "layouts", title: "Page Layout & Footer", component: <LayoutsSection /> },
+      { id: "charts", title: "Charts & Data Viz", component: <ChartsSection /> },
+      { id: "advanced", title: "Four Pillars Composite", component: <AdvancedSection /> },
+      { id: "shadcn-guide", title: "shadcn & Layout Guide", component: <ShadcnGuideSection /> },
     ],
     []
   );
