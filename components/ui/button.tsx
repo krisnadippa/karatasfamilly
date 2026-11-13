@@ -2,6 +2,7 @@
 
 import React, { forwardRef } from "react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export type ButtonVariant =
   | "primary"
@@ -26,13 +27,13 @@ export interface ButtonProps
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-[#12303C] text-white hover:bg-[#1A4252] active:bg-[#0D222B] border border-transparent shadow-sm",
+    "bg-[#12303C] text-white hover:bg-[#1A4252] active:bg-[#0D222B] border border-transparent shadow-xs",
   secondary:
-    "bg-[#20463D] text-white hover:bg-[#2B5D51] active:bg-[#17342D] border border-transparent shadow-sm",
+    "bg-[#20463D] text-white hover:bg-[#2B5D51] active:bg-[#17342D] border border-transparent shadow-xs",
   teal:
-    "bg-[#087FA0] text-white hover:bg-[#0B97BD] active:bg-[#06627B] border border-transparent shadow-sm",
+    "bg-[#087FA0] text-white hover:bg-[#0B97BD] active:bg-[#06627B] border border-transparent shadow-xs",
   goldenrod:
-    "bg-[#EBCC3D] text-[#12303C] hover:bg-[#F2D75C] active:bg-[#D4B426] border border-transparent shadow-sm font-bold",
+    "bg-[#EBCC3D] text-[#12303C] hover:bg-[#F2D75C] active:bg-[#D4B426] border border-transparent shadow-xs font-semibold",
   outline:
     "bg-transparent text-[#12303C] border border-[#12303C]/20 hover:border-[#12303C] hover:bg-[#12303C]/5 active:bg-[#12303C]/10",
   ghost:
@@ -44,8 +45,8 @@ const variantStyles: Record<ButtonVariant, string> = {
 const sizeStyles: Record<ButtonSize, string> = {
   sm: "h-9 px-3.5 text-xs rounded-full gap-1.5",
   md: "h-11 px-5 text-sm rounded-full gap-2",
-  lg: "h-13 px-7 text-base rounded-full gap-2.5",
-  icon: "h-10 w-10 p-0 rounded-full justify-center items-center",
+  lg: "h-12 px-7 text-base rounded-full gap-2.5",
+  icon: "h-10 w-10 p-0 rounded-full justify-center items-center shrink-0",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -56,7 +57,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size = "md",
       isLoading = false,
       disabled = false,
-      className = "",
+      className,
       href,
       leftIcon,
       rightIcon,
@@ -66,15 +67,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseClasses =
-      "inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-200 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087FA0] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none";
-
-    const combinedClasses = `${baseClasses} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+      "inline-flex items-center justify-center font-medium tracking-wide transition-all duration-200 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#087FA0] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none";
 
     const content = (
       <>
         {isLoading && (
           <svg
-            className="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+            className="animate-spin -ml-1 mr-2 h-4 w-4 text-current shrink-0"
             fill="none"
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -97,7 +96,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {!isLoading && leftIcon && (
           <span className="shrink-0 flex items-center">{leftIcon}</span>
         )}
-        <span>{children}</span>
+        {children && <span>{children}</span>}
         {!isLoading && rightIcon && (
           <span className="shrink-0 flex items-center">{rightIcon}</span>
         )}
@@ -106,7 +105,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     if (href && !disabled) {
       return (
-        <Link className={combinedClasses} href={href}>
+        <Link
+          href={href}
+          className={cn(baseClasses, variantStyles[variant], sizeStyles[size], className)}
+        >
           {content}
         </Link>
       );
@@ -117,7 +119,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type={type}
         disabled={disabled || isLoading}
-        className={combinedClasses}
+        aria-busy={isLoading}
+        className={cn(baseClasses, variantStyles[variant], sizeStyles[size], className)}
         {...props}
       >
         {content}
@@ -127,4 +130,3 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = "Button";
-
