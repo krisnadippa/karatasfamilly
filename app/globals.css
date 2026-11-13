@@ -19,6 +19,26 @@
   --color-warm-beige: #e5e3dd;
   --color-pure-dark: #121212;
 
+  /* Corporate Brand Color Palette */
+  --color-corporate-midnight: #12303c;
+  --color-corporate-midnight-hover: #1a4252;
+  --color-corporate-midnight-active: #0d222b;
+  --color-corporate-forest: #20463d;
+  --color-corporate-forest-hover: #2b5d51;
+  --color-corporate-forest-active: #17342d;
+  --color-corporate-teal: #087fa0;
+  --color-corporate-teal-hover: #0b97bd;
+  --color-corporate-teal-active: #06627b;
+  --color-corporate-goldenrod: #ebcc3d;
+  --color-corporate-goldenrod-hover: #f2d75c;
+  --color-corporate-goldenrod-active: #d4b426;
+  --color-corporate-gold-muted: #dfc54e;
+  --color-corporate-gold-muted-hover: #e7d16e;
+  --color-corporate-cream: #faf8f5;
+  --color-corporate-cream-muted: #f3efe8;
+  --color-corporate-border: #eae5dc;
+  --color-corporate-white: #ffffff;
+
   --font-serif: "Newsreader", "Cormorant Garamond", Georgia, serif;
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
