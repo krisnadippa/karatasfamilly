@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronRight, Home, BookOpen, User, BookMarked, Search, Layers, Compass, ExternalLink } from "lucide-react";
+import { ChevronRight, Home, BookOpen, User, BookMarked, Search, Layers, Compass, ExternalLink, Smartphone } from "lucide-react";
 import { MainNavbar } from "@/components/navigation/main-navbar";
 import { MobileNavbar } from "@/components/navigation/mobile-navbar";
+import { MobileDrawer } from "@/components/navigation/mobile-drawer";
 import { BottomNavigation } from "@/components/navigation/bottom-navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +14,7 @@ export const NavigationSection: React.FC = () => {
   const [navbarVariant, setNavbarVariant] = useState<"solid" | "transparent" | "centered">("solid");
   const [activeBottomTab, setActiveBottomTab] = useState<string>("buku-saya");
   const [activeSegmentedTab, setActiveSegmentedTab] = useState<string>("kidstory");
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
   const desktopNavbarCode = `<MainNavbar variant="${navbarVariant}" activeRoute="beranda" />`;
 
@@ -36,19 +38,20 @@ export const NavigationSection: React.FC = () => {
 
   return (
     <div className="space-y-12">
+      {/* Header */}
       <div>
-        <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider">
-          Wayfinding Architecture
-        </span>
-        <h2 className="text-2xl font-bold text-[#12303C] tracking-tight mt-1">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#087FA0]/10 text-[#087FA0] text-xs font-semibold uppercase tracking-wider mb-2">
+          <span>Navigation Architecture</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#12303C] tracking-tight font-montserrat">
           K4Family Navigation System
         </h2>
-        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl">
-          Komponen navigasi komprehensif: Desktop Main Navbar, Mobile Header dengan slide-in Drawer, Bottom Navigation untuk Library, Breadcrumbs, dan Segmented Tabs.
+        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl leading-relaxed">
+          Sistem navigasi komprehensif: Desktop Main Website Navbar, Mobile Header dengan slide-in Drawer, Bottom Navigation untuk Library, Breadcrumbs bertingkat, dan Segmented Tabs.
         </p>
       </div>
 
-      {/* 1. Desktop Main Website Navbar */}
+      {/* 1. Desktop Main Website Navbar framed in Mock Browser */}
       <ComponentPreview
         title="A. Main Website Navbar — Desktop (1440px / 1280px)"
         description="Navbar utama K4Family dengan Official Logo Placeholder, dropdown K4Book, direktori Lini Bisnis, RANI, Bantuan, Akun, dan CTA Jelajahi K4Book."
@@ -61,9 +64,9 @@ export const NavigationSection: React.FC = () => {
                 key={v}
                 type="button"
                 onClick={() => setNavbarVariant(v)}
-                className={`px-3 py-1 rounded-md text-xs font-medium cursor-pointer transition-colors ${
+                className={`px-3 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors ${
                   navbarVariant === v
-                    ? "bg-[#12303C] text-white"
+                    ? "bg-[#12303C] text-white shadow-xs"
                     : "bg-[#FBF8F0] text-[#12303C]/70 hover:bg-[#EAE5DC]"
                 }`}
               >
@@ -73,43 +76,87 @@ export const NavigationSection: React.FC = () => {
           </div>
         }
       >
-        <div className="w-full rounded-xl overflow-hidden border border-[#EAE5DC] shadow-sm">
+        <div className="w-full rounded-2xl border border-[#EAE5DC] bg-white shadow-lg overflow-hidden">
+          {/* Browser Top Window Chrome */}
+          <div className="h-9 bg-[#F4F6F5] border-b border-[#EAE5DC] px-4 flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <div className="w-3 h-3 rounded-full bg-red-400" />
+              <div className="w-3 h-3 rounded-full bg-amber-400" />
+              <div className="w-3 h-3 rounded-full bg-emerald-400" />
+            </div>
+            <div className="px-4 py-0.5 rounded-full bg-white border border-[#EAE5DC] text-[11px] font-mono text-[#12303C]/60 flex items-center gap-2">
+              <span className="text-emerald-600 font-bold">https://</span>
+              <span>k4family.id</span>
+            </div>
+            <div className="w-12" />
+          </div>
+
+          {/* Actual Navbar Render */}
           <MainNavbar variant={navbarVariant} activeRoute="beranda" />
         </div>
       </ComponentPreview>
 
-      {/* 2. Mobile Navbar & Drawer */}
+      {/* 2. Mobile Navbar & Drawer in Smartphone Mockup */}
       <ComponentPreview
         title="B. Mobile Navbar & Slide-in Drawer (320px – 767px)"
         description="Dirancang khusus untuk layar smartphone dengan tombol hamburger, search, user, dan drawer accordion interaktif."
         code={mobileNavbarCode}
       >
-        <div className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-[#EAE5DC] shadow-md bg-[#FBF8F0]">
-          <div className="p-2 bg-[#12303C] text-white text-[11px] font-mono text-center">
-            Mobile Screen Viewport (Simulasi 390px)
+        <div className="w-full max-w-[360px] mx-auto rounded-[40px] border-8 border-[#12303C]/20 bg-white shadow-2xl overflow-hidden relative">
+          {/* Phone Speaker Notch */}
+          <div className="h-7 bg-[#12303C] px-6 flex items-center justify-between text-white text-[11px] font-mono">
+            <span>09:41</span>
+            <div className="w-20 h-4 rounded-b-xl bg-black/60 flex items-center justify-center">
+              <div className="w-8 h-1 rounded-full bg-white/30" />
+            </div>
+            <span>5G</span>
           </div>
+
+          {/* Header */}
           <MobileNavbar />
-          <div className="p-8 text-center text-xs text-[#12303C]/60">
-            Tekan icon hamburger di kanan atas untuk membuka slide-in drawer dengan accordion K4Book, Lini Bisnis, dan Bantuan.
+
+          {/* Simulated Mobile Content */}
+          <div className="p-6 bg-[#FBF8F0] min-h-[300px] flex flex-col items-center justify-center text-center space-y-3">
+            <div className="w-12 h-12 rounded-full bg-[#087FA0]/10 flex items-center justify-center text-[#087FA0]">
+              <Smartphone className="w-6 h-6" />
+            </div>
+            <h4 className="text-sm font-bold text-[#12303C]">Layar Smartphone 360px</h4>
+            <p className="text-xs text-[#12303C]/70 leading-relaxed">
+              Sentuh icon menu hamburger di kanan atas navbar untuk membuka slide-in drawer dengan accordion K4Book, Lini Bisnis, dan Bantuan.
+            </p>
+          </div>
+
+          {/* Phone Bottom Home Bar */}
+          <div className="h-5 bg-white flex items-center justify-center">
+            <div className="w-28 h-1 rounded-full bg-black/20" />
           </div>
         </div>
       </ComponentPreview>
 
       {/* 3. Mobile Bottom Navigation */}
       <ComponentPreview
-        title="C. Mobile Bottom Navigation (Library & Authenticated Experience)"
+        title="C. Mobile Bottom Navigation (Library Experience)"
         description="Navigasi bawah khusus untuk pengalaman Library dengan touch target minimal 44px dan indikator aktif."
         code={bottomNavCode}
       >
-        <div className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden border border-[#EAE5DC] shadow-md bg-[#FBF8F0] relative pb-16">
-          <div className="p-6 text-center text-xs text-[#12303C]/70">
-            <span className="font-bold block text-sm text-[#12303C] mb-1">Area Konten Library</span>
-            Tab aktif saat ini: <code className="font-mono text-[#087FA0] font-bold">{activeBottomTab}</code>
+        <div className="w-full max-w-[360px] mx-auto rounded-[36px] border-8 border-[#12303C]/20 bg-[#FBF8F0] shadow-2xl overflow-hidden relative pb-16">
+          <div className="h-7 bg-[#12303C] px-6 flex items-center justify-between text-white text-[11px] font-mono">
+            <span>09:41</span>
+            <span>Library</span>
           </div>
+
+          <div className="p-8 text-center space-y-2">
+            <Badge variant="teal" dot>Pengalaman Library</Badge>
+            <h4 className="text-base font-bold text-[#12303C]">Buku Saya & Koleksi Bacaan</h4>
+            <p className="text-xs text-[#12303C]/70">
+              Navigasi bawah memudahkan akses satu tangan ke rak buku digital.
+            </p>
+          </div>
+
           <BottomNavigation
             activeTab={activeBottomTab as any}
             onTabChange={(t) => setActiveBottomTab(t)}
-            className="absolute bottom-0 left-0 right-0"
+            className="absolute bottom-0 left-0 right-0 border-t border-[#EAE5DC]"
           />
         </div>
       </ComponentPreview>

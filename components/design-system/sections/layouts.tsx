@@ -34,68 +34,82 @@ export const LayoutsSection: React.FC = () => {
 
   return (
     <div className="space-y-12">
+      {/* Header */}
       <div>
-        <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider">
-          Spatial & Structure Rules
-        </span>
-        <h2 className="text-2xl font-bold text-[#12303C] tracking-tight mt-1">
-          Page Layout Components & Footer System
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#087FA0]/10 text-[#087FA0] text-xs font-semibold uppercase tracking-wider mb-2">
+          <span>Spatial & Structure Rules</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#12303C] tracking-tight font-montserrat">
+          Page Layout & Footer System
         </h2>
-        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl">
-          Sistem layout teruji: Hero Section, Container Max-W-7xl (1280px), Padding Vertikal (py-16 md:py-24), Margin Horisontal Aman, dan Sistem Footer 5 Kolom K4Family.
+        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl leading-relaxed">
+          Sistem tata letak halaman: Hero Section dua kolom asimetris, batas kontainer `max-w-7xl` (1280px), padding vertikal ritmis, dan Sistem Footer 5 Kolom K4Family.
         </p>
       </div>
 
-      {/* 1. Homepage & K4Book Hero Layout */}
+      {/* 1. Homepage & K4Book Hero Layout framed in Browser Mockup */}
       <ComponentPreview
         title="Homepage Hero Layout (Editorial Split Screen)"
-        description="Layout dua kolom asimetris dengan headline resmi, badge ekosistem, deskripsi nilai, dan aksi pemicu utama."
+        description="Layout dua kolom asimetris dengan headline resmi, badge ekosistem, deskripsi nilai, dan tombol aksi utama."
         code={heroCode}
       >
-        <div className="w-full bg-[#FBF8F0] p-6 sm:p-10 rounded-2xl border border-[#EAE5DC]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="space-y-4">
-              <Badge variant="teal" size="sm" dot>
-                Ekosistem Resmi K4Family
-              </Badge>
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#12303C] leading-tight">
-                {OFFICIAL_TAGLINE}
-              </h3>
-              <p className="text-xs text-[#12303C]/75 leading-relaxed">
-                Membangun masa depan generasi melalui penerbitan buku anak bermutu tinggi (K4Book), artikel edukasi keluarga yang empatik (RANI), serta karya kriya dan agrikultur berkelanjutan.
-              </p>
-              <div className="flex flex-wrap gap-2.5 pt-2">
-                <Button variant="teal" size="md" rightIcon={<BookOpen className="w-4 h-4" />}>
-                  Jelajahi K4Book
-                </Button>
-                <Button variant="outline" size="md">
-                  Pelajari Ekosistem
-                </Button>
-              </div>
+        <div className="w-full rounded-2xl border border-[#EAE5DC] bg-white shadow-md overflow-hidden">
+          {/* Browser Chrome Header */}
+          <div className="h-8 bg-[#F4F6F5] border-b border-[#EAE5DC] px-4 flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+              <div className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
             </div>
+            <span className="text-[10px] font-mono text-[#12303C]/50">k4family.id — Beranda Ekosistem</span>
+            <div className="w-8" />
+          </div>
 
-            <div className="p-8 rounded-2xl bg-white border border-[#EAE5DC] flex flex-col items-center justify-center text-center shadow-xs">
-              <div className="h-10 px-4 rounded-lg bg-[#12303C] text-white flex items-center font-mono font-bold text-xs tracking-wider mb-3">
-                {OFFICIAL_LOGO_PLACEHOLDER}
+          <div className="bg-[#FBF8F0] p-6 sm:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="space-y-4">
+                <Badge variant="teal" size="sm" dot>
+                  Ekosistem Resmi K4Family
+                </Badge>
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#12303C] leading-tight font-montserrat">
+                  {OFFICIAL_TAGLINE}
+                </h3>
+                <p className="text-xs text-[#12303C]/75 leading-relaxed">
+                  Membangun masa depan generasi melalui penerbitan buku anak bermutu tinggi (K4Book), artikel edukasi keluarga yang empatik (RANI), serta karya kriya dan agrikultur berkelanjutan.
+                </p>
+                <div className="flex flex-wrap gap-2.5 pt-2">
+                  <Button variant="teal" size="md" rightIcon={<BookOpen className="w-4 h-4" />}>
+                    Jelajahi K4Book
+                  </Button>
+                  <Button variant="outline" size="md">
+                    Pelajari Ekosistem
+                  </Button>
+                </div>
               </div>
-              <span className="text-xs font-serif font-bold text-[#12303C]">
-                Pusat Integrasi Nilai Keluarga
-              </span>
-              <span className="text-[11px] text-[#12303C]/60 mt-1">
-                K4Book • RANI • K4Craft • K4Studio • K4Farm • K4Health • K4Academy • WarunK
-              </span>
+
+              <div className="p-8 rounded-2xl bg-white border border-[#EAE5DC] flex flex-col items-center justify-center text-center shadow-xs">
+                <div className="h-10 px-4 rounded-lg bg-[#12303C] text-white flex items-center font-mono font-bold text-xs tracking-wider mb-3">
+                  {OFFICIAL_LOGO_PLACEHOLDER}
+                </div>
+                <span className="text-xs font-bold text-[#12303C] font-montserrat">
+                  Pusat Integrasi Nilai Keluarga
+                </span>
+                <span className="text-[11px] text-[#12303C]/60 mt-1">
+                  K4Book • RANI • K4Craft • K4Studio • K4Farm • K4Health • K4Academy • WarunK
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </ComponentPreview>
 
-      {/* 2. Footer System (5 Columns) */}
+      {/* 2. Official 5-Column Footer System */}
       <ComponentPreview
         title="Official 5-Column Footer System"
         description="Sistem footer resmi K4Family: Kolom 1 (Logo + Tagline), Kolom 2 (Explore), Kolom 3 (K4Book), Kolom 4 (Support), Kolom 5 (Information)."
         code={`<Footer />`}
       >
-        <div className="w-full rounded-2xl overflow-hidden border border-[#EAE5DC]">
+        <div className="w-full rounded-2xl overflow-hidden border border-[#EAE5DC] shadow-sm">
           <Footer />
         </div>
       </ComponentPreview>

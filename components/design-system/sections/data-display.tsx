@@ -5,11 +5,10 @@ import { BookOpen, Heart, Calendar, Clock, User, ArrowRight, Sparkles, CheckCirc
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ProgressBar } from "@/components/ui/skeleton";
 import { ComponentPreview } from "../component-preview";
 
 export const DataDisplaySection: React.FC = () => {
-  const k4bookCardCode = `<Card variant="default" interactive className="overflow-hidden">
+  const k4bookCardCode = `<Card variant="default" interactive className="overflow-hidden max-w-xs">
   {/* Official Book Cover Placeholder */}
   <div className="h-48 w-full bg-[#12303C] flex flex-col items-center justify-center p-4 text-center">
     <BookOpen className="w-8 h-8 text-[#EBCC3D] mb-2" />
@@ -19,72 +18,74 @@ export const DataDisplaySection: React.FC = () => {
     <span className="text-[10px] text-white/60 mt-1">K4Book Digital Publishing</span>
   </div>
 
-  <CardHeader>
+  <CardHeader className="p-4 pb-2">
     <div className="flex items-center justify-between">
       <Badge variant="teal" size="sm" dot>Kidstory</Badge>
       <span className="text-[11px] font-mono text-[#087FA0] font-bold">Usia 3–5 thn</span>
     </div>
     <CardTitle className="text-base font-bold mt-1">Petualangan Bintang Kecil</CardTitle>
-    <CardDescription className="text-xs">
-      Cerita nilai ketulusan dan persahabatan awal.
+    <CardDescription className="text-xs leading-snug">
+      Cerita nilai ketulusan dan persahabatan anak.
     </CardDescription>
   </CardHeader>
-  <CardContent>
-    <div className="flex items-center gap-3 text-[11px] text-[#12303C]/70">
-      <span>Format: Digital e-Book</span>
-      <span>•</span>
-      <Badge variant="goldenrod" size="sm">Fase 1 Aktif</Badge>
-    </div>
+  <CardContent className="p-4 pt-1 pb-3 text-[11px] text-[#12303C]/70 flex items-center justify-between">
+    <span>Format: Digital e-Book</span>
+    <Badge variant="goldenrod" size="sm">Fase 1 Aktif</Badge>
   </CardContent>
-  <CardFooter>
+  <CardFooter className="p-4 pt-0">
     <Button variant="teal" size="sm" className="w-full justify-center">
       Lihat Detail Buku
     </Button>
   </CardFooter>
 </Card>`;
 
-  const raniCardCode = `<Card variant="default" interactive>
-  {/* Gouache Style Placeholder */}
-  <div className="h-40 w-full bg-[#20463D]/10 flex flex-col items-center justify-center p-4 border-b border-[#EAE5DC]">
-    <Heart className="w-7 h-7 text-[#20463D] mb-1.5" />
-    <span className="text-xs font-mono font-bold text-[#20463D] uppercase">
-      Ilustrasi Gouache (Faceless-First)
+  const raniCardCode = `<Card variant="default" interactive className="overflow-hidden max-w-xs">
+  {/* Soft Editorial Gouache Style Placeholder */}
+  <div className="h-44 w-full bg-[#20463D]/10 flex flex-col items-center justify-center p-4 text-center border-b border-[#EAE5DC]">
+    <Heart className="w-8 h-8 text-[#20463D] mb-1.5" />
+    <span className="text-[11px] font-mono font-bold text-[#20463D] uppercase tracking-wider">
+      Ilustrasi Gouache
     </span>
-    <span className="text-[10px] text-[#20463D]/60">Placeholder Seni Edukasi RANI</span>
+    <span className="text-[10px] text-[#20463D]/70 mt-0.5">Faceless-First Standard</span>
   </div>
 
-  <CardHeader>
+  <CardHeader className="p-4 pb-2">
     <div className="flex items-center justify-between">
       <Badge variant="forest" size="sm" dot>Parenting Empatik</Badge>
       <span className="text-[10px] text-[#12303C]/50 font-mono">12 Nov 2024</span>
     </div>
-    <CardTitle className="text-base font-bold mt-1">Mendengar dengan Hati: Seni Komunikasi Anak</CardTitle>
-    <CardDescription className="text-xs leading-relaxed">
-      Panduan reflektif bagi orang tua dalam membangun jembatan emosional tanpa penghakiman.
+    <CardTitle className="text-base font-bold mt-1">Mendengar dengan Hati: Seni Komunikasi</CardTitle>
+    <CardDescription className="text-xs leading-snug">
+      Panduan reflektif membangun jembatan emosional tanpa penghakiman.
     </CardDescription>
   </CardHeader>
-  <CardFooter>
+  <CardContent className="p-4 pt-1 pb-3 text-[11px] text-[#12303C]/70 flex items-center justify-between">
+    <span>Waktu Baca: 4 Menit</span>
+    <Badge variant="forest" size="sm">Published</Badge>
+  </CardContent>
+  <CardFooter className="p-4 pt-0">
     <Button variant="secondary" size="sm" className="w-full justify-center" rightIcon={<ArrowRight className="w-3.5 h-3.5" />}>
-      Baca Artikel Lengkap
+      Baca Artikel
     </Button>
   </CardFooter>
 </Card>`;
 
   return (
     <div className="space-y-12">
+      {/* Header */}
       <div>
-        <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider">
-          Presentation Layer
-        </span>
-        <h2 className="text-2xl font-bold text-[#12303C] tracking-tight mt-1">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#087FA0]/10 text-[#087FA0] text-xs font-semibold uppercase tracking-wider mb-2">
+          <span>Presentation Layer</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#12303C] tracking-tight font-montserrat">
           Data Display & Specialized Cards
         </h2>
-        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl">
-          Komponen penyaji informasi terstruktur: Kartu Buku K4Book (Cover placeholder resmi, batas usia, format), Kartu Artikel RANI (Gouache faceless-first), Kartu Brand Masa Depan (Akan Datang), dan Metrik.
+        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl leading-relaxed">
+          Komponen penyaji informasi terstruktur: Kartu Buku K4Book (Cover placeholder resmi, batas usia, format), Kartu Artikel RANI (Gouache faceless-first), dan Metrik Ekosistem.
         </p>
       </div>
 
-      {/* Special Cards: K4Book & RANI */}
+      {/* Special Cards: K4Book & RANI Side-by-Side */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* K4Book Card */}
         <ComponentPreview
@@ -93,8 +94,8 @@ export const DataDisplaySection: React.FC = () => {
           code={k4bookCardCode}
         >
           <div className="w-full max-w-xs mx-auto">
-            <Card variant="default" interactive className="overflow-hidden">
-              <div className="h-44 w-full bg-[#12303C] flex flex-col items-center justify-center p-4 text-center">
+            <Card variant="default" interactive className="overflow-hidden bg-white shadow-xs hover:shadow-md transition-all">
+              <div className="h-48 w-full bg-[#12303C] flex flex-col items-center justify-center p-4 text-center">
                 <BookOpen className="w-8 h-8 text-[#EBCC3D] mb-1.5" />
                 <span className="text-[11px] font-mono font-bold text-white uppercase tracking-wider">
                   Cover Placeholder Resmi
@@ -104,9 +105,9 @@ export const DataDisplaySection: React.FC = () => {
               <CardHeader className="p-4 pb-2">
                 <div className="flex items-center justify-between">
                   <Badge variant="teal" size="sm" dot>Kidstory</Badge>
-                  <span className="text-[10px] font-mono text-[#087FA0] font-bold">3–5 tahun</span>
+                  <span className="text-[11px] font-mono text-[#087FA0] font-bold">3–5 tahun</span>
                 </div>
-                <CardTitle className="text-sm font-bold mt-1">Petualangan Bintang Kecil</CardTitle>
+                <CardTitle className="text-base font-bold mt-1 font-montserrat">Petualangan Bintang Kecil</CardTitle>
                 <CardDescription className="text-xs leading-snug">
                   Cerita nilai ketulusan dan persahabatan anak.
                 </CardDescription>
@@ -131,8 +132,8 @@ export const DataDisplaySection: React.FC = () => {
           code={raniCardCode}
         >
           <div className="w-full max-w-xs mx-auto">
-            <Card variant="default" interactive className="overflow-hidden">
-              <div className="h-44 w-full bg-[#20463D]/10 flex flex-col items-center justify-center p-4 text-center border-b border-[#EAE5DC]">
+            <Card variant="default" interactive className="overflow-hidden bg-white shadow-xs hover:shadow-md transition-all">
+              <div className="h-48 w-full bg-[#20463D]/10 flex flex-col items-center justify-center p-4 text-center border-b border-[#EAE5DC]">
                 <Heart className="w-8 h-8 text-[#20463D] mb-1.5" />
                 <span className="text-[11px] font-mono font-bold text-[#20463D] uppercase tracking-wider">
                   Ilustrasi Gouache
@@ -144,7 +145,7 @@ export const DataDisplaySection: React.FC = () => {
                   <Badge variant="forest" size="sm" dot>Parenting Empatik</Badge>
                   <span className="text-[10px] text-[#12303C]/50 font-mono">12 Nov 2024</span>
                 </div>
-                <CardTitle className="text-sm font-bold mt-1">Mendengar dengan Hati: Seni Komunikasi</CardTitle>
+                <CardTitle className="text-base font-bold mt-1 font-montserrat">Mendengar dengan Hati: Seni Komunikasi</CardTitle>
                 <CardDescription className="text-xs leading-snug">
                   Panduan reflektif membangun jembatan emosional tanpa penghakiman.
                 </CardDescription>
@@ -163,26 +164,26 @@ export const DataDisplaySection: React.FC = () => {
         </ComponentPreview>
       </div>
 
-      {/* Metrics, Avatars, Badges */}
+      {/* Metrics & Statistics */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-5 bg-white rounded-2xl border border-[#EAE5DC] shadow-xs">
-          <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider block">
+        <div className="p-6 bg-white rounded-2xl border border-[#EAE5DC] shadow-xs">
+          <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider block font-montserrat">
             Katalog Judul Aktif
           </span>
           <p className="text-3xl font-mono font-bold text-[#12303C] mt-2">18</p>
-          <span className="text-xs text-[#12303C]/60 mt-1 block">Buku Kidstory & HumOR</span>
+          <span className="text-xs text-[#12303C]/60 mt-1 block">Buku Kidstory, HumOR & Novel</span>
         </div>
 
-        <div className="p-5 bg-white rounded-2xl border border-[#EAE5DC] shadow-xs">
-          <span className="text-xs font-bold text-[#20463D] uppercase tracking-wider block">
+        <div className="p-6 bg-white rounded-2xl border border-[#EAE5DC] shadow-xs">
+          <span className="text-xs font-bold text-[#20463D] uppercase tracking-wider block font-montserrat">
             Artikel Terpublikasi RANI
           </span>
           <p className="text-3xl font-mono font-bold text-[#12303C] mt-2">42</p>
           <span className="text-xs text-[#12303C]/60 mt-1 block">Edukasi parenting & empati</span>
         </div>
 
-        <div className="p-5 bg-white rounded-2xl border border-[#EAE5DC] shadow-xs">
-          <span className="text-xs font-bold text-[#EBCC3D] uppercase tracking-wider block">
+        <div className="p-6 bg-white rounded-2xl border border-[#EAE5DC] shadow-xs">
+          <span className="text-xs font-bold text-[#EBCC3D] uppercase tracking-wider block font-montserrat">
             Ekosistem Lini Brand
           </span>
           <p className="text-3xl font-mono font-bold text-[#12303C] mt-2">9</p>

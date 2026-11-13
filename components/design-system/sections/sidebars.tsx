@@ -63,22 +63,23 @@ export const SidebarsSection: React.FC = () => {
 </aside>`;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
+      {/* Header */}
       <div>
-        <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider">
-          Workspace Navigation
-        </span>
-        <h2 className="text-2xl font-bold text-[#12303C] tracking-tight mt-1">
-          Sidebar System (Admin & Documentation)
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#087FA0]/10 text-[#087FA0] text-xs font-semibold uppercase tracking-wider mb-2">
+          <span>Workspace Navigation</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#12303C] tracking-tight font-montserrat">
+          Sidebar System (Admin & Workspace)
         </h2>
-        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl">
-          Sistem sidebar untuk dashboard administrasi K4Family dan panel dokumentasi. Mendukung mode Expanded (260px) dan Collapsed (76px) dengan integrasi profil user dan badge notifikasi.
+        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl leading-relaxed">
+          Sistem sidebar untuk dashboard administrasi K4Family dan panel workspace. Mendukung mode Expanded (260px) dan Collapsed (76px) dengan profil user dan badge notifikasi.
         </p>
       </div>
 
       <ComponentPreview
         title="Admin Dashboard Sidebar Preview (DEMO)"
-        description="Sidebar manajemen K4Book, RANI, Tiket Bantuan, dan Direktori Brand. Uji collapse/expand untuk melihat adaptasi layout."
+        description="Sidebar manajemen K4Book, RANI, Tiket Bantuan, dan Direktori Brand. Uji collapse/expand untuk melihat adaptasi layout yang mulus."
         code={sidebarCode}
         controls={
           <div className="flex items-center gap-3">
@@ -96,20 +97,20 @@ export const SidebarsSection: React.FC = () => {
           </div>
         }
       >
-        <div className="w-full flex justify-center py-4 bg-[#F4F6F5] rounded-xl p-4">
+        <div className="w-full flex justify-center py-4 bg-[#F4F6F5] rounded-2xl p-6">
           <aside
             className={`bg-[#12303C] text-white rounded-2xl shadow-xl flex flex-col transition-all duration-300 overflow-hidden ${
               isCollapsed ? "w-20" : "w-64"
-            } h-[580px]`}
+            } h-[580px] border border-white/10`}
           >
             {/* Top Brand Header */}
-            <div className="p-4 border-b border-white/10 flex items-center justify-between">
+            <div className="p-4 border-b border-white/10 flex items-center justify-between bg-black/10">
               {!isCollapsed ? (
                 <div className="flex flex-col">
                   <span className="font-mono font-bold text-[10px] tracking-wider text-[#EBCC3D]">
                     {OFFICIAL_LOGO_PLACEHOLDER}
                   </span>
-                  <span className="text-[11px] text-white/60">Admin Console</span>
+                  <span className="text-[11px] text-white/60">Admin Console V04</span>
                 </div>
               ) : (
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center font-mono font-bold text-[10px] text-[#EBCC3D] mx-auto">
@@ -123,7 +124,7 @@ export const SidebarsSection: React.FC = () => {
               {adminMenuGroups.map((grp) => (
                 <div key={grp.group} className="space-y-1">
                   {!isCollapsed && (
-                    <span className="text-[10px] font-bold text-white/40 uppercase tracking-wider px-2 block">
+                    <span className="text-[10px] font-bold text-white/40 uppercase tracking-wider px-2 block font-montserrat">
                       {grp.group}
                     </span>
                   )}
@@ -162,7 +163,7 @@ export const SidebarsSection: React.FC = () => {
             </div>
 
             {/* User Profile & Logout Bottom */}
-            <div className="p-3 border-t border-white/10 bg-black/10 flex items-center justify-between">
+            <div className="p-3 border-t border-white/10 bg-black/20 flex items-center justify-between">
               {!isCollapsed ? (
                 <>
                   <div className="flex items-center gap-2.5">
@@ -177,7 +178,7 @@ export const SidebarsSection: React.FC = () => {
                   <button
                     type="button"
                     className="p-1.5 rounded-lg text-white/60 hover:text-red-400 hover:bg-white/5 transition-colors cursor-pointer"
-                    title="Keluar"
+                    title="Keluar Sesi"
                   >
                     <LogOut className="w-4 h-4" />
                   </button>

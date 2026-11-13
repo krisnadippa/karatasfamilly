@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, HelpCircle, Layers } from "lucide-react";
+import { Sparkles, HelpCircle, Layers, ShieldCheck } from "lucide-react";
 import {
   Dialog,
   DialogHeader,
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { ComponentPreview } from "../component-preview";
 
 export const OverlaysSection: React.FC = () => {
@@ -21,39 +22,40 @@ export const OverlaysSection: React.FC = () => {
   const dialogCode = `<Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
   <DialogHeader>
     <div className="flex items-center justify-between w-full">
-      <DialogTitle>Konfirmasi Prinsip Karatas</DialogTitle>
+      <DialogTitle>Konfirmasi Komitmen Nilai K4Family</DialogTitle>
       <DialogCloseButton onClick={() => setIsDialogOpen(false)} />
     </div>
     <DialogDescription>
-      Tindakan ini akan mencatat komitmen kepemimpinan Anda ke dalam sistem.
+      Tindakan ini akan mencatat pilihan kurasi Anda ke dalam ekosistem.
     </DialogDescription>
   </DialogHeader>
   <DialogContent>
     <p>
-      Setiap keputusan dibangun atas empat pilar: Faith, Family, Freedom, dan Future.
+      Setiap inisiatif K4Family dibangun atas integritas, keterbukaan, dan tanggung jawab antargenerasi.
     </p>
   </DialogContent>
   <DialogFooter>
-    <Button variant="ghost" onClick={() => setIsDialogOpen(false)}>Batal</Button>
-    <Button variant="primary" onClick={() => setIsDialogOpen(false)}>Setujui & Lanjutkan</Button>
+    <Button variant="ghost" size="sm" onClick={() => setIsDialogOpen(false)}>Batal</Button>
+    <Button variant="teal" size="sm" onClick={() => setIsDialogOpen(false)}>Setujui & Lanjutkan</Button>
   </DialogFooter>
 </Dialog>`;
 
-  const tooltipCode = `<Tooltip content="Warna korporat Ocean Teal melambangkan pendidikan" position="top">
+  const tooltipCode = `<Tooltip content="Warna korporat Ocean Teal melambangkan pendidikan dan eksplorasi digital" position="top">
   <Button variant="outline" size="sm">Arahkan Kursor ke Sini</Button>
 </Tooltip>`;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
+      {/* Header */}
       <div>
-        <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider">
-          Overlays & Modals
-        </span>
-        <h2 className="text-2xl font-bold text-[#12303C] tracking-tight mt-1">
-          Dialogs & Tooltips
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#087FA0]/10 text-[#087FA0] text-xs font-semibold uppercase tracking-wider mb-2">
+          <span>Overlays & Dialogs</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#12303C] tracking-tight font-montserrat">
+          Dialogs & Tooltip Overlays
         </h2>
-        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl">
-          Komponen pelapis di atas konten utama untuk konfirmasi kritis, dialog formulir, dan petunjuk ringkas (tooltip).
+        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl leading-relaxed">
+          Komponen pelapis di atas konten utama untuk konfirmasi kritis, dialog formulir, dan petunjuk ringkas (tooltip) dengan penanganan fokus keyboard dan tombol ESC.
         </p>
       </div>
 
@@ -64,33 +66,33 @@ export const OverlaysSection: React.FC = () => {
           description="Jendela fokus dengan latar blur (backdrop), penanganan tombol ESC, dan pemisah aksi."
           code={dialogCode}
         >
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-3 py-4">
             <Button
-              variant="primary"
+              variant="teal"
+              size="md"
               onClick={() => setIsDialogOpen(true)}
               leftIcon={<Layers className="w-4 h-4" />}
             >
-              Buka Modal Dialog
+              Buka Modal Konfirmasi
             </Button>
-            <span className="text-xs text-[#12303C]/60">
-              Klik untuk menguji backdrop & interaksi keyboard ESC
+            <span className="text-xs text-[#12303C]/60 font-mono">
+              Klik tombol untuk menguji backdrop & interaksi keyboard ESC
             </span>
 
             {/* Actual Dialog */}
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogHeader>
                 <div className="flex items-center justify-between w-full">
-                  <DialogTitle>Konfirmasi Prinsip Karatas</DialogTitle>
+                  <DialogTitle className="font-montserrat">Konfirmasi Komitmen Nilai K4Family</DialogTitle>
                   <DialogCloseButton onClick={() => setIsDialogOpen(false)} />
                 </div>
                 <DialogDescription>
-                  Tindakan ini mencatat komitmen kepemimpinan Anda ke dalam sistem.
+                  Tindakan ini akan mencatat pilihan kurasi Anda ke dalam ekosistem.
                 </DialogDescription>
               </DialogHeader>
               <DialogContent>
-                <p className="leading-relaxed">
-                  Setiap keputusan organisasi dan karya dibangun atas empat pilar kokoh: 
-                  <strong> Faith, Family, Freedom, dan Future</strong>. Apakah Anda siap melanjutkan implementasi?
+                <p className="leading-relaxed text-xs text-[#12303C]/80">
+                  Setiap inisiatif K4Family dibangun atas integritas, keterbukaan, dan tanggung jawab antargenerasi. Apakah Anda siap melanjutkan implementasi pada akun Library?
                 </p>
               </DialogContent>
               <DialogFooter>
@@ -107,11 +109,11 @@ export const OverlaysSection: React.FC = () => {
 
         {/* Tooltips */}
         <ComponentPreview
-          title="Tooltips"
-          description="Petunjuk mikro yang muncul saat hover atau keyboard focus."
+          title="Directional Tooltips"
+          description="Petunjuk mikro kontekstual yang muncul saat hover atau keyboard focus."
           code={tooltipCode}
         >
-          <div className="flex flex-wrap items-center justify-center gap-4 py-4">
+          <div className="flex flex-wrap items-center justify-center gap-4 py-6">
             <Tooltip content="Tooltip Atas (Top Position)" position="top">
               <Button variant="outline" size="sm">
                 Hover Top
@@ -131,7 +133,7 @@ export const OverlaysSection: React.FC = () => {
             </Tooltip>
 
             <Tooltip content="Goldenrod: #EBCC3D" position="right">
-              <Button variant="goldenrod" size="sm">
+              <Button variant="warning" size="sm">
                 Hover Right
               </Button>
             </Tooltip>
@@ -141,4 +143,3 @@ export const OverlaysSection: React.FC = () => {
     </div>
   );
 };
-

@@ -16,6 +16,7 @@ import { TablesSection } from "@/components/design-system/sections/tables";
 import { OverlaysSection } from "@/components/design-system/sections/overlays";
 import { LayoutsSection } from "@/components/design-system/sections/layouts";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { OFFICIAL_TAGLINE } from "@/lib/design-system/tokens";
 
 export default function DesignSystemPage() {
@@ -62,22 +63,30 @@ export default function DesignSystemPage() {
       searchQuery={searchQuery}
       onSearchChange={setSearchQuery}
     >
-      <div className="space-y-16">
+      <div className="space-y-16 pb-24">
         {/* Top Header Banner */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#EAE5DC]">
-          <div>
-            <h1 className="text-3xl font-bold text-[#12303C] tracking-tight font-montserrat">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#EAE5DC] shadow-xs flex flex-wrap items-center justify-between gap-6">
+          <div className="space-y-1.5 max-w-2xl">
+            <div className="flex items-center gap-2">
+              <Badge variant="teal" size="sm" dot>
+                Version V1.0
+              </Badge>
+              <span className="text-[11px] font-mono text-[#12303C]/60 uppercase tracking-wider">
+                Developer Brief V04 Official
+              </span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-[#12303C] tracking-tight font-montserrat">
               K4Family Design System
             </h1>
-            <p className="text-xs text-[#12303C]/70 mt-1">
-              Developer Brief V04 Single Source of Truth: Palet warna korporat resmi, 9 lini brand ekosistem, sistem icon Lucide, dan komponen UI terintegrasi Next.js.
+            <p className="text-xs sm:text-sm text-[#12303C]/75 leading-relaxed">
+              Panduan desain komprehensif untuk ekosistem terintegrasi K4Family: K4Book (Penerbitan Digital), RANI (Artikel Edukasi), dan 6 lini masa depan.
             </p>
-            <p className="text-[11px] text-[#087FA0] font-serif italic mt-0.5">
+            <p className="text-xs text-[#087FA0] font-serif italic pt-1">
               "{OFFICIAL_TAGLINE}"
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <Button
               variant={activeSection === "all" ? "primary" : "outline"}
               size="sm"
@@ -86,7 +95,7 @@ export default function DesignSystemPage() {
                 setSearchQuery("");
               }}
             >
-              Tampilkan Semua ({sections.length})
+              Semua Modul ({sections.length})
             </Button>
           </div>
         </div>
@@ -99,17 +108,16 @@ export default function DesignSystemPage() {
             </section>
           ))
         ) : (
-          <div className="p-12 text-center bg-white rounded-2xl border border-[#EAE5DC]">
-            <p className="text-sm font-semibold text-[#12303C]">
-              Tidak ditemukan komponen untuk pencarian "{searchQuery}"
+          <div className="p-12 text-center bg-white rounded-3xl border border-[#EAE5DC] space-y-3">
+            <p className="text-sm font-bold text-[#12303C] font-montserrat">
+              Tidak ditemukan komponen untuk kata kunci "{searchQuery}"
             </p>
-            <p className="text-xs text-[#12303C]/60 mt-1">
+            <p className="text-xs text-[#12303C]/60">
               Coba kata kunci seperti navbar, button, card, kidstory, rani, icon, dialog, atau table.
             </p>
             <Button
               variant="outline"
               size="sm"
-              className="mt-4"
               onClick={() => setSearchQuery("")}
             >
               Reset Pencarian

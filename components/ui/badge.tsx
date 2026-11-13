@@ -10,7 +10,9 @@ export type BadgeVariant =
   | "goldenrod"
   | "gold"
   | "cream"
-  | "outline";
+  | "outline"
+  | "destructive"
+  | "success";
 
 export type BadgeSize = "sm" | "md" | "lg";
 
@@ -26,8 +28,10 @@ const variantStyles: Record<BadgeVariant, string> = {
   teal: "bg-[#087FA0] text-white border-transparent",
   goldenrod: "bg-[#EBCC3D] text-[#12303C] font-semibold border-transparent",
   gold: "bg-[#DFC54E]/20 text-[#12303C] border-[#DFC54E]/40",
-  cream: "bg-[#FAF8F5] text-[#12303C] border-[#EAE5DC]",
+  cream: "bg-[#FBF8F0] text-[#12303C] border-[#EAE5DC]",
   outline: "bg-transparent text-[#12303C] border-[#12303C]/20",
+  destructive: "bg-red-50 text-red-700 border-red-200 font-medium",
+  success: "bg-emerald-50 text-emerald-800 border-emerald-200 font-medium",
 };
 
 const dotColors: Record<BadgeVariant, string> = {
@@ -38,6 +42,8 @@ const dotColors: Record<BadgeVariant, string> = {
   gold: "bg-[#DFC54E]",
   cream: "bg-[#087FA0]",
   outline: "bg-[#12303C]",
+  destructive: "bg-red-600",
+  success: "bg-emerald-600",
 };
 
 const sizeStyles: Record<BadgeSize, string> = {

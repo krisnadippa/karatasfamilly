@@ -31,12 +31,12 @@ export const TablesSection: React.FC = () => {
   const tableCode = `<Table>
   <TableHeader>
     <TableRow>
-      <TableHead>ID (DEMO)</TableHead>
-      <TableHead>Judul Produk</TableHead>
-      <TableHead>Lini / Kategori</TableHead>
+      <TableHead>Kode (DEMO)</TableHead>
+      <TableHead>Judul Buku</TableHead>
+      <TableHead>Lini / Seri</TableHead>
       <TableHead>Kelompok Usia</TableHead>
       <TableHead>Format</TableHead>
-      <TableHead>Status</TableHead>
+      <TableHead>Status Rilis</TableHead>
     </TableRow>
   </TableHeader>
   <TableBody>
@@ -55,21 +55,22 @@ export const TablesSection: React.FC = () => {
 
   return (
     <div className="space-y-12">
+      {/* Header */}
       <div>
-        <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider">
-          Structured Tabular Data
-        </span>
-        <h2 className="text-2xl font-bold text-[#12303C] tracking-tight mt-1">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#087FA0]/10 text-[#087FA0] text-xs font-semibold uppercase tracking-wider mb-2">
+          <span>Tabular System</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#12303C] tracking-tight font-montserrat">
           Data Table System (Admin & Catalog)
         </h2>
-        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl">
-          Tabel data terstruktur responsif untuk manajemen produk K4Book, daftar pesanan pembayaran, dan review artikel RANI. Seluruh data berlabel <strong>DEMO</strong> sesuai ketentuan brief.
+        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl leading-relaxed">
+          Tabel data terstruktur responsif untuk manajemen produk K4Book, pesanan pembayaran, dan review artikel RANI. Seluruh data berlabel <strong>DEMO</strong> sesuai ketentuan brief.
         </p>
       </div>
 
       <ComponentPreview
         title="K4Family Ecosystem Admin Tables (DEMO DATA)"
-        description="Ganti tab untuk melihat tabel Produk K4Book, Pesanan Pelanggan, atau Daftar Artikel RANI."
+        description="Ganti tab dataset untuk melihat tabel Produk K4Book, Pesanan Pelanggan, atau Daftar Artikel RANI."
         code={tableCode}
         controls={
           <div className="flex items-center gap-2">
@@ -77,8 +78,8 @@ export const TablesSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedTab("products")}
-              className={`px-3 py-1 rounded-md text-xs font-medium cursor-pointer transition-colors ${
-                selectedTab === "products" ? "bg-[#12303C] text-white" : "bg-[#FBF8F0] text-[#12303C]/70"
+              className={`px-3 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors ${
+                selectedTab === "products" ? "bg-[#12303C] text-white shadow-xs" : "bg-[#FBF8F0] text-[#12303C]/70"
               }`}
             >
               Produk K4Book
@@ -86,8 +87,8 @@ export const TablesSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedTab("orders")}
-              className={`px-3 py-1 rounded-md text-xs font-medium cursor-pointer transition-colors ${
-                selectedTab === "orders" ? "bg-[#12303C] text-white" : "bg-[#FBF8F0] text-[#12303C]/70"
+              className={`px-3 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors ${
+                selectedTab === "orders" ? "bg-[#12303C] text-white shadow-xs" : "bg-[#FBF8F0] text-[#12303C]/70"
               }`}
             >
               Pesanan Pelanggan
@@ -95,8 +96,8 @@ export const TablesSection: React.FC = () => {
             <button
               type="button"
               onClick={() => setSelectedTab("articles")}
-              className={`px-3 py-1 rounded-md text-xs font-medium cursor-pointer transition-colors ${
-                selectedTab === "articles" ? "bg-[#12303C] text-white" : "bg-[#FBF8F0] text-[#12303C]/70"
+              className={`px-3 py-1 rounded-lg text-xs font-medium cursor-pointer transition-colors ${
+                selectedTab === "articles" ? "bg-[#12303C] text-white shadow-xs" : "bg-[#FBF8F0] text-[#12303C]/70"
               }`}
             >
               Artikel RANI
@@ -121,7 +122,7 @@ export const TablesSection: React.FC = () => {
                 {demoProducts.map((p) => (
                   <TableRow key={p.id}>
                     <TableCell className="font-mono text-xs text-[#087FA0] font-bold">{p.id}</TableCell>
-                    <TableCell className="font-semibold text-xs text-[#12303C]">{p.title}</TableCell>
+                    <TableCell className="font-semibold text-xs text-[#12303C] font-montserrat">{p.title}</TableCell>
                     <TableCell>
                       <Badge variant="teal" size="sm">{p.category}</Badge>
                     </TableCell>
@@ -153,9 +154,9 @@ export const TablesSection: React.FC = () => {
                 {demoOrders.map((o) => (
                   <TableRow key={o.id}>
                     <TableCell className="font-mono text-xs text-[#12303C] font-bold">{o.id}</TableCell>
-                    <TableCell className="font-semibold text-xs text-[#12303C]">{o.customer}</TableCell>
+                    <TableCell className="font-semibold text-xs text-[#12303C] font-montserrat">{o.customer}</TableCell>
                     <TableCell className="text-xs text-[#12303C]/70">{o.items}</TableCell>
-                    <TableCell className="font-mono text-xs text-[#12303C]">{o.total}</TableCell>
+                    <TableCell className="font-mono text-xs text-[#12303C] font-bold">{o.total}</TableCell>
                     <TableCell>
                       <Badge
                         variant={
@@ -188,7 +189,7 @@ export const TablesSection: React.FC = () => {
                 {demoArticles.map((a) => (
                   <TableRow key={a.id}>
                     <TableCell className="font-mono text-xs text-[#20463D] font-bold">{a.id}</TableCell>
-                    <TableCell className="font-semibold text-xs text-[#12303C]">{a.title}</TableCell>
+                    <TableCell className="font-semibold text-xs text-[#12303C] font-montserrat">{a.title}</TableCell>
                     <TableCell>
                       <Badge variant="forest" size="sm">{a.category}</Badge>
                     </TableCell>

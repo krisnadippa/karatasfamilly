@@ -247,3 +247,4 @@ export const MainNavbar: React.FC<MainNavbarProps> = ({
     </nav>
   );
 };
+

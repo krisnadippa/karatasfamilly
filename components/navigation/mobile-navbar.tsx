@@ -59,3 +59,4 @@ export const MobileNavbar: React.FC<MobileNavbarProps> = ({ className = "" }) =>
     </>
   );
 };
+

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { BookOpen, Sparkles, Heart, Hammer, Camera, Sprout, Activity, GraduationCap, Utensils, ArrowRight } from "lucide-react";
+import { BookOpen, Sparkles, Heart, Hammer, Camera, Sprout, Activity, GraduationCap, Utensils, ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { k4Brands, kidstoryAgeGroups } from "@/lib/design-system/tokens";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,8 +9,6 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { ComponentPreview } from "../component-preview";
 
 export const BrandDirectorySection: React.FC = () => {
-  const [selectedBrandId, setSelectedBrandId] = useState<string>("k4book");
-
   const brandIcons: Record<string, React.ReactNode> = {
     k4family: <Sparkles className="w-5 h-5 text-[#EBCC3D]" />,
     k4book: <BookOpen className="w-5 h-5 text-[#087FA0]" />,
@@ -23,11 +21,9 @@ export const BrandDirectorySection: React.FC = () => {
     warunk: <Utensils className="w-5 h-5 text-[#B54D35]" />,
   };
 
-  const selectedBrand = k4Brands.find((b) => b.id === selectedBrandId) || k4Brands[0];
-
-  const brandDirectoryCode = `<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+  const brandDirectoryCode = `<div className="grid grid-cols-1 md:grid-cols-3 gap-5">
   {k4Brands.map((brand) => (
-    <Card key={brand.id} variant="default" interactive>
+    <Card key={brand.id} variant="default" interactive className="flex flex-col justify-between">
       <CardHeader>
         <div className="flex items-center justify-between">
           <Badge variant={brand.status === "Active Phase 1" ? "teal" : "outline"} dot>
@@ -45,6 +41,7 @@ export const BrandDirectorySection: React.FC = () => {
         <Button 
           variant={brand.status === "Active Phase 1" ? "teal" : "outline"}
           size="sm"
+          className="w-full justify-center"
         >
           {brand.status === "Active Phase 1" ? "Jelajahi Brand" : "Kenali Brand"}
         </Button>
@@ -54,26 +51,27 @@ export const BrandDirectorySection: React.FC = () => {
 </div>`;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
+      {/* Header */}
       <div>
-        <span className="text-xs font-bold text-[#087FA0] uppercase tracking-wider">
-          Ecosystem Architecture
-        </span>
-        <h2 className="text-2xl font-bold text-[#12303C] tracking-tight mt-1">
-          K4Family 9 Lini Bisnis (Brand Tokens)
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#087FA0]/10 text-[#087FA0] text-xs font-semibold uppercase tracking-wider mb-2">
+          <span>Brand Architecture</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#12303C] tracking-tight font-montserrat">
+          K4Family 9 Lini Bisnis Ekosistem
         </h2>
-        <p className="text-sm text-[#12303C]/70 mt-1 max-w-2xl">
-          Dokumentasi identitas visual, panduan estetika, dan status rilis per lini brand. K4Book dan RANI merupakan prioritas aktif fase pertama; enam lini lainnya berstatus Akan Datang.
+        <p className="text-sm text-[#12303C]/70 mt-1 max-w-3xl leading-relaxed">
+          Dokumentasi identitas visual, panduan estetika, dan status rilis 9 lini brand. K4Book dan RANI merupakan prioritas aktif fase pertama; enam lini lainnya berstatus <strong>Akan Datang</strong> dengan larangan tombol transaksi.
         </p>
       </div>
 
-      {/* Grid of 9 Brands */}
+      {/* Grid of 9 Brands with Equal Heights */}
       <ComponentPreview
-        title="Direktori 9 Brand K4Family"
-        description="Kartu identitas resmi seluruh brand dengan status rilis dan larangan CTA transaksi pada lini masa depan."
+        title="Direktori 9 Brand Resmi K4Family"
+        description="Setiap kartu menampilkan status rilis resmi, deskripsi fungsi keluarga, panduan visual, dan tombol aksi yang patuh brief."
         code={brandDirectoryCode}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
           {k4Brands.map((brand) => {
             const isActive = brand.status === "Active Phase 1";
             return (
@@ -81,38 +79,44 @@ export const BrandDirectorySection: React.FC = () => {
                 key={brand.id}
                 variant="default"
                 interactive
-                className={`border-l-4 ${
-                  isActive ? "border-l-[#087FA0]" : "border-l-[#12303C]/20"
+                className={`flex flex-col justify-between border-t-4 bg-white shadow-xs hover:shadow-md transition-all ${
+                  isActive ? "border-t-[#087FA0]" : "border-t-[#12303C]/20"
                 }`}
               >
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <Badge
-                      variant={isActive ? "teal" : "outline"}
-                      size="sm"
-                      dot={isActive}
-                    >
-                      {brand.status}
-                    </Badge>
-                    {brandIcons[brand.id]}
-                  </div>
-                  <CardTitle className="text-lg font-bold mt-2 text-[#12303C]">
-                    {brand.name}
-                  </CardTitle>
-                  <CardDescription className="text-xs font-medium text-[#12303C]/80">
-                    {brand.tagline}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-xs text-[#12303C]/70 leading-relaxed mb-3">
-                    {brand.description}
-                  </p>
-                  <div className="p-2.5 rounded-lg bg-[#FBF8F0] border border-[#EAE5DC] text-[11px] text-[#12303C]/80">
-                    <span className="font-semibold block text-[#12303C]">Visual Direction:</span>
-                    {brand.visualStyle}
-                  </div>
-                </CardContent>
-                <CardFooter>
+                <div>
+                  <CardHeader className="p-5 pb-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge
+                        variant={isActive ? "teal" : "outline"}
+                        size="sm"
+                        dot={isActive}
+                      >
+                        {brand.status}
+                      </Badge>
+                      <div className="p-2 rounded-lg bg-[#FBF8F0]">
+                        {brandIcons[brand.id]}
+                      </div>
+                    </div>
+                    <CardTitle className="text-lg font-bold text-[#12303C] font-montserrat">
+                      {brand.name}
+                    </CardTitle>
+                    <CardDescription className="text-xs font-medium text-[#087FA0]">
+                      {brand.tagline}
+                    </CardDescription>
+                  </CardHeader>
+
+                  <CardContent className="p-5 pt-0 space-y-3">
+                    <p className="text-xs text-[#12303C]/75 leading-relaxed">
+                      {brand.description}
+                    </p>
+                    <div className="p-2.5 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC] text-[11px] text-[#12303C]/80 leading-snug">
+                      <span className="font-semibold text-[#12303C] block mb-0.5">Visual Aesthetic:</span>
+                      {brand.visualStyle}
+                    </div>
+                  </CardContent>
+                </div>
+
+                <CardFooter className="p-5 pt-0">
                   <Button
                     variant={isActive ? "teal" : "outline"}
                     size="sm"
@@ -131,80 +135,106 @@ export const BrandDirectorySection: React.FC = () => {
       {/* Deep-Dive Active Brand Guidelines: K4Book & RANI */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* K4Book Sub-lines */}
-        <div className="p-6 bg-white rounded-2xl border border-[#EAE5DC] shadow-xs space-y-4">
-          <div className="flex items-center justify-between pb-2 border-b border-[#EAE5DC]">
-            <div className="flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-[#087FA0]" />
-              <h3 className="font-bold text-sm text-[#12303C]">K4Book — Lini Aktif</h3>
+        <div className="p-6 sm:p-8 bg-white rounded-2xl border border-[#EAE5DC] shadow-xs space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-[#EAE5DC]">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-lg bg-[#087FA0]/10 text-[#087FA0]">
+                <BookOpen className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-bold text-base text-[#12303C] font-montserrat">K4Book — Lini Aktif Fase 1</h3>
+                <span className="text-[11px] text-[#087FA0] font-medium">Digital Publishing & Commerce</span>
+              </div>
             </div>
-            <Badge variant="teal" size="sm">Fase 1</Badge>
+            <Badge variant="teal" size="sm" dot>Fase 1</Badge>
           </div>
 
-          <div className="space-y-3 text-xs">
-            <div className="p-3 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC]">
-              <span className="font-bold text-[#12303C] block">1. Kidstory (Buku Cerita Anak)</span>
-              <p className="text-[#12303C]/70 mt-0.5 leading-relaxed">
+          <div className="space-y-3.5 text-xs">
+            <div className="p-4 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC] space-y-2">
+              <span className="font-bold text-xs text-[#12303C] block font-montserrat">
+                1. Kidstory (Buku Cerita Anak)
+              </span>
+              <p className="text-[#12303C]/75 leading-relaxed">
                 Estetika soft watercolor storybook. Pembagian kelompok usia resmi:
               </p>
-              <div className="grid grid-cols-3 gap-1.5 mt-2">
+              <div className="grid grid-cols-3 gap-2 pt-1">
                 {kidstoryAgeGroups.map((age) => (
-                  <div key={age.id} className="p-1.5 bg-white rounded-md border border-[#EAE5DC] text-center">
-                    <span className="font-bold text-[10px] text-[#087FA0] block">{age.label}</span>
+                  <div key={age.id} className="p-2 bg-white rounded-lg border border-[#EAE5DC] text-center shadow-2xs">
+                    <span className="font-bold text-[11px] text-[#087FA0] block font-mono">{age.label}</span>
+                    <span className="text-[10px] text-[#12303C]/60 block mt-0.5">{age.id === "0-18m" ? "Sensori" : age.id === "18m-3y" ? "Kata Pertama" : "Kemandirian"}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="p-3 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC]">
-              <span className="font-bold text-[#12303C] block">2. HumOR (Komedi HR & Refleksi)</span>
-              <p className="text-[#12303C]/70 mt-0.5 leading-relaxed">
-                Warm Ivory (#F7F1E8), Deep Ocean (#173F52), flat-vector editorial, komedi elegan profesional.
+            <div className="p-4 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC]">
+              <span className="font-bold text-xs text-[#12303C] block font-montserrat">
+                2. HumOR (Komedi HR & Refleksi)
+              </span>
+              <p className="text-[#12303C]/75 mt-1 leading-relaxed">
+                Warm Ivory (#F7F1E8), Deep Ocean (#173F52), flat-vector editorial, komedi elegan profesional dunia kerja.
               </p>
             </div>
 
-            <div className="p-3 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC]">
-              <span className="font-bold text-[#12303C] block">3. Novel (Literatur & Fiksi)</span>
-              <p className="text-[#12303C]/70 mt-0.5 leading-relaxed">
-                Cinematic literary look, kedalaman narasi, format cetak & e-book resolusi tinggi.
+            <div className="p-4 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC]">
+              <span className="font-bold text-xs text-[#12303C] block font-montserrat">
+                3. Novel (Fiksi & Sastra Nilai)
+              </span>
+              <p className="text-[#12303C]/75 mt-1 leading-relaxed">
+                Cinematic literary look, narasi keluarga mendalam, format digital dan cetak berkualitas tinggi.
               </p>
             </div>
           </div>
         </div>
 
         {/* RANI Guidelines */}
-        <div className="p-6 bg-white rounded-2xl border border-[#EAE5DC] shadow-xs space-y-4">
-          <div className="flex items-center justify-between pb-2 border-b border-[#EAE5DC]">
-            <div className="flex items-center gap-2">
-              <Heart className="w-4 h-4 text-[#20463D]" />
-              <h3 className="font-bold text-sm text-[#12303C]">RANI — Kanal Edukasi</h3>
+        <div className="p-6 sm:p-8 bg-white rounded-2xl border border-[#EAE5DC] shadow-xs space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-[#EAE5DC]">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-lg bg-[#20463D]/10 text-[#20463D]">
+                <Heart className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-bold text-base text-[#12303C] font-montserrat">RANI — Kanal Edukasi Fase 1</h3>
+                <span className="text-[11px] text-[#20463D] font-medium">Family Education Articles</span>
+              </div>
             </div>
-            <Badge variant="forest" size="sm">Fase 1</Badge>
+            <Badge variant="forest" size="sm" dot>Fase 1</Badge>
           </div>
 
-          <div className="space-y-3 text-xs">
-            <div className="p-3 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC]">
-              <span className="font-bold text-[#12303C] block">Karakter Visual: Soft Editorial Gouache</span>
-              <p className="text-[#12303C]/70 mt-0.5 leading-relaxed">
-                Sentuhan lukisan gouache lembut bernuansa empatik, hangat, dan menenangkan.
+          <div className="space-y-3.5 text-xs">
+            <div className="p-4 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC]">
+              <span className="font-bold text-xs text-[#12303C] block font-montserrat">
+                Karakter Visual: Soft Editorial Gouache
+              </span>
+              <p className="text-[#12303C]/75 mt-1 leading-relaxed">
+                Sentuhan tekstur lukisan gouache lembut bernuansa empatik, hangat, dan menenangkan jiwa.
               </p>
             </div>
 
-            <div className="p-3 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC]">
-              <span className="font-bold text-[#12303C] block">Aturan Utama: Faceless-First</span>
-              <p className="text-[#12303C]/70 mt-0.5 leading-relaxed">
-                Ilustrasi mengutamakan representasi universal keluarga tanpa menonjolkan foto figur atau founder.
+            <div className="p-4 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC]">
+              <span className="font-bold text-xs text-[#12303C] block font-montserrat">
+                Aturan Pokok: Faceless-First
+              </span>
+              <p className="text-[#12303C]/75 mt-1 leading-relaxed">
+                Seluruh ilustrasi dan cover artikel mengutamakan representasi universal keluarga tanpa menampilkan foto wajah figur atau founder.
               </p>
             </div>
 
-            <div className="p-3 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC]">
-              <span className="font-bold text-[#12303C] block">Siklus Status Artikel Resmi</span>
-              <div className="flex items-center gap-2 mt-2">
-                <Badge variant="outline" size="sm">Draft</Badge>
+            <div className="p-4 rounded-xl bg-[#FBF8F0] border border-[#EAE5DC] space-y-2">
+              <span className="font-bold text-xs text-[#12303C] block font-montserrat">
+                Siklus Status Artikel Resmi
+              </span>
+              <div className="flex items-center gap-2 pt-1">
+                <Badge variant="outline" size="sm">1. Draft</Badge>
                 <span className="text-[#12303C]/40">→</span>
-                <Badge variant="goldenrod" size="sm">Review</Badge>
+                <Badge variant="goldenrod" size="sm">2. Review</Badge>
                 <span className="text-[#12303C]/40">→</span>
-                <Badge variant="forest" size="sm">Published</Badge>
+                <Badge variant="forest" size="sm" dot>3. Published</Badge>
               </div>
+              <p className="text-[11px] text-[#12303C]/60 pt-1">
+                Hanya artikel berstatus Published yang dapat diakses oleh publik pembaca.
+              </p>
             </div>
           </div>
         </div>
